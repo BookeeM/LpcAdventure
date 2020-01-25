@@ -49,10 +49,9 @@ public class Hud implements Disposable{
 	private TextureRegionDrawable texturegiondrawable;
 	private ImageButton button;
 	
-	public Hud(SpriteBatch sb) {
+	public Hud(SpriteBatch sb, Integer niveauActuel) {
 		
-		
-		worldTimer = 300;
+		worldTimer = 0;
 		timeCount = 0;
 		score = 0;
 
@@ -71,7 +70,7 @@ public class Hud implements Disposable{
 		countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		scoreLabel = new Label(String.format("%06d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		timeLabel = new Label("TEMPS", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-		levelLabel = new Label("1-1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+		levelLabel = new Label("Niveau "+niveauActuel, new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		worldLabel = new Label("MONDE", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		lpcLabel = new Label("LpcAdventure", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		
@@ -201,7 +200,7 @@ public class Hud implements Disposable{
 		timeCount += dt;
 		if(timeCount >= 1) {
 			
-			worldTimer--;
+			worldTimer++;
 			countdownLabel.setText(String.format("%03d",worldTimer));
 			timeCount = 0;
 			

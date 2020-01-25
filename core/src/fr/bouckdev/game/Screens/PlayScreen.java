@@ -84,7 +84,6 @@ public class PlayScreen implements Screen{
 			gamecam = new OrthographicCamera();
 			gamePort = new FitViewport(LpcAdventure.V_WIDTH / Joueur.PPM, LpcAdventure.V_HEIGHT / Joueur.PPM, gamecam);
 			//
-			hud = new Hud(game.batch);
 			//
 			maploader = new TmxMapLoader(); 
 			map = maploader.load("LpcAdventure2.tmx");
@@ -111,7 +110,7 @@ public class PlayScreen implements Screen{
 			items = new Array<Item>();
 			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
 			//
-			hud = new Hud(game.batch);
+			hud = new Hud(game.batch,game.getLvl());
 			break;
 		case 2:
 			waitJump = false;
@@ -123,7 +122,8 @@ public class PlayScreen implements Screen{
 			gamecam = new OrthographicCamera();
 			gamePort = new FitViewport(LpcAdventure.V_WIDTH / Joueur.PPM, LpcAdventure.V_HEIGHT / Joueur.PPM, gamecam);
 			//
-			hud = new Hud(game.batch);
+			
+			
 			//
 			maploader = new TmxMapLoader(); 
 			map = maploader.load("LpcAdventure3.tmx");
@@ -150,7 +150,7 @@ public class PlayScreen implements Screen{
 			items = new Array<Item>();
 			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
 			//
-			hud = new Hud(game.batch);
+			hud = new Hud(game.batch,game.getLvl());
 			break;
 		default:
 			System.out.print("ok");
@@ -221,9 +221,9 @@ public class PlayScreen implements Screen{
 
 		}
 					
-		if(hud.isRightPressed() && player.b2body.getLinearVelocity().x <= 2) 			
+		if(hud.isRightPressed() && player.b2body.getLinearVelocity().x <= 1.1) 			
 			player.b2body.applyLinearImpulse(new Vector2(0.07f, 0), player.b2body.getWorldCenter(), true);			
-		if(hud.isLeftPressed() && player.b2body.getLinearVelocity().x >= -2)		
+		if(hud.isLeftPressed() && player.b2body.getLinearVelocity().x >= -1.1)		
 			player.b2body.applyLinearImpulse(new Vector2(-0.07f, 0), player.b2body.getWorldCenter(), true);
 		
 	}

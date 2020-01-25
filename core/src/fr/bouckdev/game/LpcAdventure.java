@@ -69,5 +69,9 @@ public class LpcAdventure extends Game{
 		batch.dispose();
 		
 	}
+	
+	public Integer getLvl() {
+		return niveau;
+	}
 
 }
