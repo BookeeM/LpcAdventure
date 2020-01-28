@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="345">
+ <tileset firstgid="1" source="LpcAdventure.tsx"/>
+ <layer id="1" name="background" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eAHtVrsOwjAM7MDOTwJiA1bg47EHqxnixs3DdokrWamcx53ju6qXZVkuEXEHB9bAFbhbxA1wrSI8G9+tf9GAhXcR08q7iEu9e8C7pzgBnzQ8cQsuvrRC/XiCZiziBbhWQbW/gYOnSL27991THcFFT1cf0LBFfAHXKrzqa69nufVe6wte/X1t4V3EtPIu4nrXEefL2rxGvWe4Vwk/DS4zYYR/ffpZ4gXpGi09S/hocZkFJ/wb/u2l9ZJ/e+HEOatme/s310MOw+of+gj9z91jbU6j3hI3DQ4zYnDeasmXeknz4d/1O5rTHt1T7Zg7c1SuxHEU7uzntviU21vqZTpv4eEj9Ty9qz3v2jVKuGlzqsXDWri9ublcjtvfO895sDUv6SeuCf/yWsFeS++R1vXWh+Q8wpaMeB4+knOt1mAdHHZuLpfj9vfOt/p0a7+kn+FfXivUa8k9WmpIyo/WYV30UI1W4x2IjIzRdW35r3WO+rU1Wvr3Bz2EEmM=
+  </data>
+ </layer>
+ <layer id="2" name="graphics" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eAHtWsFqVTEQLbjwiTtBuuqiIILYpa7bhbtCdeU3iPgr/rM58I6cjjNJ5r7c3Fd7A2Emk5kzk9w54Sm9uDiv8bKUo5PV/aLiyO+ObTftN5C5gaviPGJmcvb61urqxZjl96Yk0qlc7tFn1bnn+b9uoMaRzN5atxLVsFa+U3GVwxmdHD81/x7//G4g4kivfc0bi2pYM+dsbOU5eUw5qxbmq8lZtex58jcQ8aRlz2fKR3g15FHWiWC/A/39gBTKZegzhs1ZW8+oZ8+x7AY8ntRsy7Isi7J1LEMZGwXusteVx2OznA/arPdk5onx3ew4WMMTWVuO1NZbHEnr2SK/zUnuqvT6wcbt6/O5Ae9NQp89RQ6jZjuVM6pv8QW2zm/PrLxV3frt6zk30PoN5L2tHn9R7WgOW159mXMl//CZdYxK/zsJRA4nw4a7oxeUs6qPTOb1XC/+56PjiyIvy4Q810HuPZQCv1bmt7IX3Qm/QXRGj6ueDfHsM/T7jQNY+7+O6+JPnlASjxL25zh4/i3PXuMu+iHqr0zN7MVT8O4aCcmZhlt4nk+twM59/B0Lz9sTAl8dfKdgs3vq5+15tncliH0GSQ5aCWxr41rjIx2+S4b3nizB2SKGd7FFbubEN2/NUzhssYG15Jvds2BHApN5nO1HJvh557l95BUv7N+gAUvxMrUgC+rRcaeLQTr7rCaRqrbfs0e+e2V7e9Zm1x5Oxka8rOzNwTvp9R/phz7UXmP/RzKT+2NxjnBgZ8+rjPDVB7r+JuXvT80V4dBOX4uLtQ7ut2zEox/XkD0Dfq/EsfZOidtftfctZK9FEoDRXtYOvthBDLVbm12rL/W3R4Xnfn1cRxwlZlYyX00S82dxmjHZk5Taay0dMT86ZwvL24+wra/1a+1bf6xtDNfqu9TGOEjFi3T4gb+1fyfr3oeEL+PwzrHXIon6or0l9kPB0zMTo2bzfNQf+iGYjB0tbX5dM9cf/mBrJw==
+  </data>
+ </layer>
+ <objectgroup id="3" name="ground">
+  <object id="194" x="416" y="192" width="64" height="16"/>
+  <object id="195" x="480" y="176" width="16" height="16"/>
+  <object id="196" x="496" y="144" width="16" height="32"/>
+  <object id="197" x="512" y="128" width="16" height="16"/>
+  <object id="198" x="528" y="80" width="16" height="48"/>
+  <object id="199" x="544" y="64" width="32" height="16"/>
+  <object id="200" x="576" y="80" width="32" height="16"/>
+  <object id="201" x="608" y="96" width="16" height="48"/>
+  <object id="202" x="624" y="144" width="16" height="16"/>
+  <object id="203" x="640" y="160" width="16" height="32"/>
+  <object id="204" x="656" y="192" width="16" height="16"/>
+  <object id="205" x="576" y="0" width="64" height="32"/>
+  <object id="209" x="832" y="192" width="96" height="16"/>
+  <object id="210" x="848" y="176" width="80" height="16"/>
+  <object id="212" x="880" y="160" width="48" height="16"/>
+  <object id="213" x="896" y="144" width="32" height="16"/>
+  <object id="218" x="608" y="16" width="224" height="32"/>
+  <object id="219" x="816" y="32" width="48" height="32"/>
+  <object id="221" x="864" y="48" width="64" height="32"/>
+  <object id="222" x="928" y="128" width="16" height="16"/>
+  <object id="223" x="944" y="144" width="16" height="32"/>
+  <object id="224" x="960" y="176" width="80" height="16"/>
+  <object id="227" x="576" y="-48" width="64" height="48"/>
+  <object id="231" x="1024" y="192" width="16" height="16"/>
+  <object id="233" x="1136" y="176" width="144" height="32"/>
+  <object id="234" x="1280" y="160" width="16" height="16"/>
+  <object id="235" x="1296" y="144" width="32" height="16"/>
+  <object id="237" x="1344" y="64" width="160" height="16"/>
+  <object id="238" x="1488" y="80" width="16" height="16"/>
+  <object id="239" x="1344" y="48" width="144" height="16"/>
+  <object id="240" x="1456" y="144" width="16" height="48"/>
+  <object id="241" x="1472" y="160" width="16" height="48"/>
+  <object id="242" x="1488" y="176" width="80" height="32"/>
+  <object id="243" x="1312" y="160" width="16" height="48"/>
+  <object id="246" x="1552" y="160" width="16" height="16"/>
+  <object id="261" x="1616" y="176" width="32" height="32"/>
+  <object id="262" x="1696" y="176" width="32" height="32"/>
+  <object id="263" x="1776" y="160" width="32" height="48"/>
+  <object id="264" x="1840" y="160" width="16" height="48"/>
+  <object id="267" x="1135.73" y="175.818" height="32.3636"/>
+  <object id="275" x="1856" y="128" width="192" height="32"/>
+  <object id="276" x="2032" y="160" width="16" height="48"/>
+  <object id="280" x="2048" y="192" width="400" height="16"/>
+  <object id="284" x="2432" y="96" width="16" height="80"/>
+  <object id="285" x="2448" y="112" width="16" height="96"/>
+  <object id="286" x="2464" y="128" width="16" height="80"/>
+  <object id="288" x="2144" y="128" width="16" height="32"/>
+  <object id="289" x="2256" y="128" width="16" height="32"/>
+  <object id="290" x="2336" y="96" width="16" height="64"/>
+  <object id="291" x="2335.33" y="80" width="16.6667" height="16"/>
+  <object id="294" x="2048" y="176" width="16" height="16"/>
+  <object id="297" x="2128" y="112" width="32" height="16"/>
+  <object id="299" x="2254" y="112" width="18" height="15.9375"/>
+  <object id="300" x="2480" y="144" width="96" height="64"/>
+  <object id="301" x="2592" y="144" width="96" height="64"/>
+  <object id="305" x="2688" y="128" width="64" height="16"/>
+  <object id="306" x="2752" y="112" width="64" height="16"/>
+  <object id="307" x="2816" y="128" width="16" height="16"/>
+  <object id="308" x="2832" y="144" width="16" height="16"/>
+  <object id="309" x="2848" y="160" width="32" height="16"/>
+  <object id="310" x="2880" y="176" width="16" height="16"/>
+  <object id="311" x="2896" y="192" width="16" height="16"/>
+  <object id="312" x="2960" y="160" width="32" height="48"/>
+  <object id="313" x="3040" y="160" width="32" height="48"/>
+  <object id="314" x="3104" y="160" width="32" height="48"/>
+  <object id="315" x="3152" y="96" width="80" height="16"/>
+  <object id="316" x="3232" y="112" width="96" height="16"/>
+  <object id="317" x="3312" y="80" width="16" height="32"/>
+  <object id="318" x="3328" y="64" width="16" height="16"/>
+  <object id="319" x="3344" y="48" width="16" height="16"/>
+  <object id="320" x="3360" y="32" width="16" height="16"/>
+  <object id="321" x="3376" y="0" width="16" height="32"/>
+  <object id="322" x="3152" y="64" width="16" height="32"/>
+  <object id="323" x="3136" y="48" width="16" height="16"/>
+  <object id="324" x="3120" y="32" width="16" height="16"/>
+  <object id="325" x="3104" y="0" width="16" height="32"/>
+  <object id="326" x="3248" y="192" width="96" height="16"/>
+  <object id="327" x="3344" y="176" width="80" height="16"/>
+  <object id="328" x="3424" y="160" width="224" height="16"/>
+  <object id="329" x="3648" y="176" width="16" height="16"/>
+  <object id="330" x="3664" y="192" width="32" height="16"/>
+  <object id="332" x="3680" y="48" width="16" height="144"/>
+  <object id="333" x="1200" y="128" width="48" height="16"/>
+  <object id="335" x="1199.88" y="126.875" width="48.375" height="1"/>
+  <object id="344" x="2416" y="80" width="16" height="32"/>
+ </objectgroup>
+ <objectgroup id="4" name="trousse">
+  <object id="336" x="1216" y="128" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="5" name="vitamine"/>
+ <objectgroup id="6" name="BlackFlamingo">
+  <object id="266" x="1312" y="128" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="7" name="FinNiveau">
+  <object id="331" x="3616" y="112" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="8" name="up">
+  <object id="337" x="2416" y="144" width="16" height="16"/>
+ </objectgroup>
+</map>
