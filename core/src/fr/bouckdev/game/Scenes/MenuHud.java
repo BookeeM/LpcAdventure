@@ -1,4 +1,7 @@
-package fr.bouckdev.game.Scenes;
+/*package fr.bouckdev.game.Scenes;
+
+
+CLASSE NON AJOUTEE ENCORE
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -46,4 +49,4 @@ public class MenuHud implements Disposable {
 		
 	}
 
-}
+}*/

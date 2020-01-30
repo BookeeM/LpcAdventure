@@ -31,6 +31,7 @@ public class EndScreen implements Screen{
 	
 	public EndScreen(Game game, LpcAdventure lpcadventure) {
 		
+		//Défini les temps fait aux niveaux en fin de game
 		niv1 = lpcadventure.speedrunTimes[0];
 		niv2 = lpcadventure.speedrunTimes[1];
 		niv3 = lpcadventure.speedrunTimes[2];
@@ -44,6 +45,7 @@ public class EndScreen implements Screen{
 		
 		Label.LabelStyle font = new Label.LabelStyle(new BitmapFont(), Color.WHITE);
 		
+		//Creation d'une table pour ajouter les scores.
 		Table table = new Table();
 		table.center();
 		table.setFillParent(true);
@@ -82,6 +84,7 @@ public class EndScreen implements Screen{
 
 	@Override
 	public void render(float delta) {
+		//Si un bouton est appuyé, on recommence le jeu, new Playscreen défini le nouvel écran de jeu, ici on choisi Playscreen(écran de jeu)
 		if(Gdx.input.justTouched()) {
 			game.setScreen(new PlayScreen((LpcAdventure) game, true,0));
 			dispose();

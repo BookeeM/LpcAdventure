@@ -13,16 +13,18 @@ import com.badlogic.gdx.utils.Array;
 
 import fr.bouckdev.game.LpcAdventure;
 import fr.bouckdev.game.Screens.PlayScreen;
-import fr.bouckdev.game.Sprite.BlackFlamingo;
-import fr.bouckdev.game.Sprite.FinNiveau;
 import fr.bouckdev.game.Sprite.Joueur;
-import fr.bouckdev.game.Sprite.Trousse;
-import fr.bouckdev.game.Sprite.Vitamine;
-import fr.bouckdev.game.Sprite.upBloc;
+import fr.bouckdev.game.Sprite.blocs.FinNiveau;
+import fr.bouckdev.game.Sprite.blocs.Trousse;
+import fr.bouckdev.game.Sprite.blocs.Vitamine;
+import fr.bouckdev.game.Sprite.blocs.upBloc;
+import fr.bouckdev.game.Sprite.mobs.BlackFlamingo;
+import fr.bouckdev.game.Sprite.mobs.Crabe;
 
 public class B2WorldCreator {
 	
 	private Array<BlackFlamingo> blackflamingo;
+	private Array<Crabe> crabe;
 	
 	public B2WorldCreator(PlayScreen screen) {
 		
@@ -89,6 +91,13 @@ public class B2WorldCreator {
 			new upBloc(screen, rect);
 			
 		}
+	/*	for(MapObject object : map.getLayers().get(8).getObjects().getByType(RectangleMapObject.class))  {// 2 = couche de calque à partir de laquelle y a des objets. à faire autant de fois que dobjets
+			
+			Rectangle rect = ((RectangleMapObject) object).getRectangle();
+			
+			crabe.add(new Crabe(screen, rect.getX()/ Joueur.PPM, rect.getY() / Joueur.PPM));
+			
+		}*/
 		
 		
 		
@@ -98,6 +107,12 @@ public class B2WorldCreator {
 	public Array<BlackFlamingo> getBlackFlamingo() {
 		
 		return blackflamingo;
+		
+	}
+
+	public Array<Crabe> getCrabe() {
+		
+		return crabe;
 		
 	}
 

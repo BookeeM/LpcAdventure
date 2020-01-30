@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="204">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="212">
  <tileset firstgid="1" source="LpcAdventure.tsx"/>
  <layer id="1" name="background" width="240" height="13">
   <data encoding="base64" compression="zlib">
@@ -97,8 +97,6 @@
   <object id="116" x="2256" y="176" width="16" height="32"/>
   <object id="119" x="2352" y="96" width="16" height="16"/>
   <object id="120" x="2320" y="96" width="16" height="16"/>
-  <object id="122" x="2784" y="144" width="16" height="32"/>
-  <object id="123" x="2800" y="176" width="32" height="16"/>
   <object id="124" x="2832" y="192" width="16" height="16"/>
   <object id="125" x="2800" y="128" width="48" height="16"/>
   <object id="126" x="2848" y="144" width="80" height="16"/>
@@ -111,7 +109,6 @@
   <object id="133" x="3296" y="144" width="16" height="16"/>
   <object id="134" x="3312" y="160" width="16" height="16"/>
   <object id="135" x="3328" y="176" width="16" height="32"/>
-  <object id="136" x="2848" y="192" width="480" height="16"/>
   <object id="139" x="3584" y="144" width="16" height="32"/>
   <object id="140" x="3600" y="160" width="16" height="16"/>
   <object id="141" x="3616" y="176" width="16" height="32"/>
@@ -133,6 +130,11 @@
   <object id="192" x="2000" y="160" width="32" height="48"/>
   <object id="199" x="3376" y="176" width="96" height="16"/>
   <object id="200" x="3440" y="192" width="16" height="16"/>
+  <object id="205" x="2784" y="144" width="16" height="16"/>
+  <object id="206" x="2768" y="192" width="64" height="16"/>
+  <object id="207" x="2848" y="208" width="496" height="16"/>
+  <object id="208" x="3344" y="208" height="16"/>
+  <object id="210" x="2848" y="160" width="16" height="48"/>
  </objectgroup>
  <objectgroup id="4" name="trousse">
   <object id="58" x="560" y="96" width="16" height="16"/>
@@ -144,18 +146,20 @@
  </objectgroup>
  <objectgroup id="6" name="BlackFlamingo">
   <object id="150" x="1728" y="144" width="16" height="16"/>
-  <object id="151" x="976" y="144" width="16" height="16"/>
   <object id="152" x="2448" y="160" width="16" height="16"/>
-  <object id="154" x="2816" y="112" width="16" height="16"/>
   <object id="155" x="2960" y="144" width="16" height="16"/>
   <object id="156" x="3104" y="128" width="16" height="16"/>
-  <object id="159" x="3216" y="96" width="16" height="16"/>
   <object id="161" x="3696" y="128" width="16" height="16"/>
+  <object id="211" x="1088" y="144" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="7" name="FinNiveau">
   <object id="144" x="3696" y="96" width="16" height="16"/>
+  <object id="209" x="2832" y="144" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="8" name="up">
   <object id="203" x="3776" y="96" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="9" name="Crabe">
+  <object id="204" x="688" y="176" width="16" height="16"/>
  </objectgroup>
 </map>

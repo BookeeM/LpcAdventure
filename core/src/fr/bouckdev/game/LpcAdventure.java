@@ -7,7 +7,7 @@ import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import fr.bouckdev.game.Screens.PlayScreen;
-import fr.bouckdev.game.Sprite.FinNiveau;
+import fr.bouckdev.game.Sprite.blocs.FinNiveau;
 
 public class LpcAdventure extends Game{
 	public static SpriteBatch batch; // Accéder aux ressources partout
@@ -43,7 +43,7 @@ public class LpcAdventure extends Game{
 	
 	@Override
 	public void create () {
-			
+			//Définition de la partie + lancement
 			big = false;
 			speedrunTimes = new int[6];
 			niveau = 1;
@@ -64,13 +64,13 @@ public class LpcAdventure extends Game{
 	@Override
 	public void render () {
 		
-		super.render(); // Déléguer les tâches à la méthode playscreen
+		super.render(); // Déléguer les tâches à playscreen
 		
 	}
 	
 	
 	@Override
-	public void dispose()  {
+	public void dispose()  { //Unload la partie
 		
 		super.dispose();
 		manager.dispose();
@@ -78,12 +78,12 @@ public class LpcAdventure extends Game{
 		
 	}
 	
-	public Integer getLvl() {
+	public Integer getLvl() { 
 		return niveau;
 	}
 	
 	public void up() {
-		nbVies = nbVies + 1;
+		nbVies ++;
 	}
 
 

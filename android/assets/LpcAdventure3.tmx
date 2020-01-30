@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="334">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="347">
  <tileset firstgid="1" source="LpcAdventure.tsx"/>
  <layer id="8" name="background" width="240" height="13">
   <data encoding="base64" compression="zlib">
@@ -123,6 +123,16 @@
   <object id="325" x="3600" y="176" width="16" height="32"/>
   <object id="326" x="3664" y="176" width="176" height="32"/>
   <object id="327" x="3520" y="176" width="32" height="32"/>
+  <object id="337" x="2032" y="-16" width="16" height="16"/>
+  <object id="338" x="2048" y="-32" width="16" height="16"/>
+  <object id="339" x="2064" y="-48" width="16" height="16"/>
+  <object id="340" x="2080" y="-64" width="16" height="16"/>
+  <object id="341" x="2096" y="-80" width="16" height="16"/>
+  <object id="342" x="2112" y="-80" width="32" height="16"/>
+  <object id="343" x="2176" y="-128" width="16" height="64"/>
+  <object id="344" x="2192" y="-128" width="80" height="16"/>
+  <object id="345" x="2272" y="-128" width="32" height="16"/>
+  <object id="346" x="2304" y="-128" width="1312" height="16"/>
  </objectgroup>
  <objectgroup id="4" name="trousse">
   <object id="185" x="768" y="80" width="16" height="16"/>
@@ -148,4 +158,5 @@
  <objectgroup id="9" name="up">
   <object id="333" x="3168" y="0" width="16" height="16"/>
  </objectgroup>
+ <objectgroup id="10" name="Crabe"/>
 </map>

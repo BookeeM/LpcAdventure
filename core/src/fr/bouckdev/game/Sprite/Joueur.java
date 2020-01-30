@@ -16,6 +16,9 @@ import com.badlogic.gdx.utils.Array;
 import fr.bouckdev.game.LpcAdventure;
 import fr.bouckdev.game.Scenes.Hud;
 import fr.bouckdev.game.Screens.PlayScreen;
+import fr.bouckdev.game.Sprite.items.Item;
+import fr.bouckdev.game.Sprite.items.ItemDef;
+import fr.bouckdev.game.Sprite.items.up;
 
 public class Joueur extends Sprite {
 	
@@ -43,16 +46,24 @@ public class Joueur extends Sprite {
 	private boolean joueurIsBig;
 	private boolean gameOver;
 	
+	public boolean flappyb;
+	
+	private PlayScreen screenbis;
+	
 	private LpcAdventure jeu;
 	
 	
-	public Joueur(PlayScreen screen, LpcAdventure game,Boolean setGrand) {
+	
+	public Joueur(PlayScreen screen, LpcAdventure game,Boolean setGrand, Boolean flappy) {
 		
 
-		
+
 		super(screen.getAtlas().findRegion("Entites"));
 		this.world = screen.getWorld();
 		
+		screenbis = screen;
+		screen.flappy = flappy;
+		flappyb = flappy;
 		jeu = game;
 		currentState = State.STANDING;
 		previousState = State.STANDING;
@@ -115,10 +126,16 @@ public class Joueur extends Sprite {
 		
 		setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
 		setRegion(getFrame(dt));
-		if((b2body.getPosition().y - getWidth() / 2) < -0.5 && isDead() != true)  {
+		if((b2body.getPosition().y - getWidth() / 2) < -1.2 && isDead() != true)  {
 		
 			hit();
 			
+		}
+		
+		if(flappyb) {
+			if(b2body.getPosition().x > 35)  {
+				screenbis.changeNiveau = true;
+			}
 		}
 		
 	}

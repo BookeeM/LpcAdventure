@@ -7,14 +7,14 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
 import fr.bouckdev.game.LpcAdventure;
-import fr.bouckdev.game.Sprite.BlackFlamingo;
 import fr.bouckdev.game.Sprite.InteractiveTileObject;
-import fr.bouckdev.game.Sprite.Item;
 import fr.bouckdev.game.Sprite.Joueur;
-import fr.bouckdev.game.Sprite.Mobs;
+import fr.bouckdev.game.Sprite.items.Item;
+import fr.bouckdev.game.Sprite.mobs.BlackFlamingo;
+import fr.bouckdev.game.Sprite.mobs.Mobs;
 
 public class WorldContactListener implements ContactListener {
-
+	
 	@Override
 	public void beginContact(Contact contact) { // quand 2 fixture collisionnent
 		
@@ -34,7 +34,35 @@ public class WorldContactListener implements ContactListener {
 			}
 		}
 		
+		
+		
 		switch (cDef){
+			case LpcAdventure.OBJECT_BIT | LpcAdventure.JOUEUR_BIT:
+                if(fixA.getFilterData().categoryBits == LpcAdventure.JOUEUR_BIT) {
+                	if(((Joueur) fixA.getUserData()).flappyb) {
+                		
+                		if(((Joueur) fixA.getUserData()).isBig()) {
+                			((Joueur) fixA.getUserData()).hit();
+                			((Joueur) fixA.getUserData()).hit();
+                		} else {
+                			((Joueur) fixA.getUserData()).hit();
+                		}
+                		
+                	}
+                }
+                else {
+                	if(((Joueur) fixB.getUserData()).flappyb) {
+                		if(((Joueur) fixB.getUserData()).isBig()) {
+                			((Joueur) fixB.getUserData()).hit();
+                			((Joueur) fixB.getUserData()).hit();
+                		} else {
+                			((Joueur) fixB.getUserData()).hit();
+                		}        
+                	}
+                }
+						
+
+				break;
 		
 			case LpcAdventure.MOBS_HEAD_BIT | LpcAdventure.JOUEUR_BIT:
 				

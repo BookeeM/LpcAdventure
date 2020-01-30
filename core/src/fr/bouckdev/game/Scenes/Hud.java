@@ -51,7 +51,7 @@ public class Hud implements Disposable{
 	private TextureRegionDrawable texturegiondrawable;
 	private ImageButton button;
 	
-	public Hud(SpriteBatch sb, Integer niveauActuel, Integer scorePrecedent, Integer timerPrecedent, Integer nbVies) {
+	public Hud(SpriteBatch sb, Integer niveauActuel, Integer scorePrecedent, Integer timerPrecedent, Integer nbVies) { //Définition du HUD visible en jeu
 		
 		score = scorePrecedent;	
 		worldTimer = timerPrecedent;
@@ -60,12 +60,14 @@ public class Hud implements Disposable{
 		viewport = new FitViewport(LpcAdventure.V_WIDTH,LpcAdventure.V_HEIGHT, new OrthographicCamera());
 		stage = new Stage(viewport, sb);
 		
-		Table table = new Table();
+		Table table = new Table(); //Creation d'une table pour disposer les paramètres du HUD
 		Table controlsLeft = new Table();
 		Table controlsJump = new Table();
 		Table controlsRight = new Table();
 		table.top();
 		table.setFillParent(true);
+		
+		//Définition des labels pour la table
 		
 		countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 		scoreLabel = new Label(String.format("%06d", score), new Label.LabelStyle(new BitmapFont(), Color.WHITE));
@@ -89,11 +91,11 @@ public class Hud implements Disposable{
 		
 		stage.addActor(table);
 		
-
+			//Ajout des contrôles Android (boutons)
 		       stage.addListener(new InputListener(){
 
 		            @Override
-		            public boolean keyDown(InputEvent event, int keycode) {
+		            public boolean keyDown(InputEvent event, int keycode) { //Défini si une touche est pressée
 		                switch(keycode){
 		                    case Input.Keys.UP:
 		                        upPressed = true;
@@ -112,7 +114,7 @@ public class Hud implements Disposable{
 		            }
 
 		            @Override
-		            public boolean keyUp(InputEvent event, int keycode) {
+		            public boolean keyUp(InputEvent event, int keycode) {//défini si une touche est relâchée
 		                switch(keycode){
 		                    case Input.Keys.UP:
 		                        upPressed = false;
@@ -135,7 +137,7 @@ public class Hud implements Disposable{
 			
 		    Image upImg = new Image(new Texture("flatDark25.png"));
 		    upImg.setColor(1,1,1,0.5f);
-		    upImg.setSize(40, 40);    
+		    upImg.setSize(50,50);    
 		    upImg.addListener(new InputListener() {
 		    	
 		    	@Override
@@ -154,7 +156,7 @@ public class Hud implements Disposable{
 		    
 		    Image leftImg = new Image(new Texture("flatDark23.png"));
 		    leftImg.setColor(1,1,1,0.5f);
-		    leftImg.setSize(40, 40); 
+		    leftImg.setSize(50, 50); 
 		    leftImg.addListener(new InputListener() {
 		    	
 		    	@Override
@@ -173,7 +175,7 @@ public class Hud implements Disposable{
 		    
 		    Image rightImg = new Image(new Texture("flatDark24.png"));
 		    rightImg.setColor(1,1,1,0.5f);
-		    rightImg.setSize(40, 40);
+		    rightImg.setSize(50, 50);
 		    rightImg.addListener(new InputListener() {
 		    	
 		    	@Override
@@ -190,11 +192,11 @@ public class Hud implements Disposable{
 		    });
 		    
 		    
-		    controlsRight.add(rightImg).size(rightImg.getWidth(), rightImg.getHeight()).padBottom(rightImg.getHeight()).padLeft(rightImg.getWidth()*6+ game.V_WIDTH);
-		    controlsLeft.add(leftImg).size(leftImg.getWidth(), leftImg.getHeight()).padBottom(leftImg.getHeight()).padLeft(leftImg.getWidth()*4+ game.V_WIDTH);
+		    controlsRight.add(rightImg).size(rightImg.getWidth(), rightImg.getHeight()).padBottom(rightImg.getHeight()).padLeft(rightImg.getWidth()*6+ game.V_WIDTH+30);
+		    controlsLeft.add(leftImg).size(leftImg.getWidth(), leftImg.getHeight()).padBottom(leftImg.getHeight()).padLeft(leftImg.getWidth()*4+ game.V_WIDTH -10);
 		    controlsJump.add(upImg).size(upImg.getWidth(), upImg.getHeight()).padBottom(upImg.getHeight()).padLeft(upImg.getWidth()*2);
 		
-	    if(Gdx.app.getType() == ApplicationType.Android) {
+	   if(Gdx.app.getType() == ApplicationType.Android) { // Si on est sur android, on rend le HUD des contrôles
 
 			stage.addActor(controlsLeft);
 			stage.addActor(controlsRight);
@@ -203,7 +205,7 @@ public class Hud implements Disposable{
 		
 	}
 	
-	public void update(float dt,LpcAdventure game) {
+	public void update(float dt,LpcAdventure game) { // Mise à jour du HUD (Niveau,vies)
 		
 		timeCount += dt;
 		if(timeCount >= 1) {
@@ -217,7 +219,7 @@ public class Hud implements Disposable{
 		
 	}
 	
-	public static void addScore(int value) {
+	public static void addScore(int value) { //Fonction qui ajoute du score
 			
 		score += value;
 		scoreLabel.setText(String.format("%06d", score));
