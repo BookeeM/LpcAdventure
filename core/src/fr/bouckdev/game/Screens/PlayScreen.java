@@ -21,6 +21,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import fr.bouckdev.game.LpcAdventure;
+import fr.bouckdev.game.Sauvegarde;
 import fr.bouckdev.game.Scenes.Hud;
 import fr.bouckdev.game.Sprite.Joueur;
 import fr.bouckdev.game.Sprite.items.Crevette;
@@ -76,12 +77,18 @@ public class PlayScreen implements Screen{
 	public Integer nbNiveau;
 	
 	private boolean decel;
+	
+	public Sauvegarde sauvegardebis;
+	
+	public PlayScreen(LpcAdventure game, Boolean restart, Integer time, Sauvegarde sauvegarde) {
+		
 
-	public PlayScreen(LpcAdventure game, Boolean restart, Integer time) {
+		
 		nbNiveau = 5;
 		decel = false;
 		finJeu = false;
 		flappy = false;
+		sauvegardebis = sauvegarde;
 		//On regarde quel niveau doit être enclenché.
 		switch(game.niveau) {			
 		case 1:
@@ -110,9 +117,9 @@ public class PlayScreen implements Screen{
 			world = new World(new Vector2(0, -10), true);
 			b2dr = new Box2DDebugRenderer();
 			//
-			player = new Joueur(this,game,false,false);
+			player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
 			//
-			creator = new B2WorldCreator(this);
+			creator = new B2WorldCreator(this,sauvegardebis);
 			//
 			world.setContactListener(new WorldContactListener());
 			//
@@ -124,7 +131,7 @@ public class PlayScreen implements Screen{
 			items = new Array<Item>();
 			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
 			//
-			hud = new Hud(game.batch,game.getLvl(),0,time,game.nbVies);
+			hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 			break;
 		case 2:
 
@@ -151,9 +158,9 @@ public class PlayScreen implements Screen{
 			world = new World(new Vector2(0, -10), true);
 			b2dr = new Box2DDebugRenderer();
 			
-			player = new Joueur(this,game,game.big,false);
+			player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
 			//
-			creator = new B2WorldCreator(this);
+			creator = new B2WorldCreator(this,sauvegardebis);
 			//
 			world.setContactListener(new WorldContactListener());
 			//
@@ -165,7 +172,7 @@ public class PlayScreen implements Screen{
 			items = new Array<Item>();
 			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
 			//
-			hud = new Hud(game.batch,game.getLvl(),0,time,game.nbVies);
+			hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 			break;
 		case 3:
 
@@ -192,9 +199,9 @@ public class PlayScreen implements Screen{
 			world = new World(new Vector2(0, -10), true);
 			b2dr = new Box2DDebugRenderer();
 			
-			player = new Joueur(this,game,game.big,false);
+			player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
 			//
-			creator = new B2WorldCreator(this);
+			creator = new B2WorldCreator(this,sauvegardebis);
 			//
 			world.setContactListener(new WorldContactListener());
 			//
@@ -206,7 +213,7 @@ public class PlayScreen implements Screen{
 			items = new Array<Item>();
 			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
 			//
-			hud = new Hud(game.batch,game.getLvl(),0,time,game.nbVies);
+			hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 			break;
 		case 4:
 
@@ -233,9 +240,9 @@ public class PlayScreen implements Screen{
 			world = new World(new Vector2(0, -10), true);
 			b2dr = new Box2DDebugRenderer();
 			
-			player = new Joueur(this,game,game.big,true);
+			player = new Joueur(this,game,sauvegarde.isBig(),true,sauvegardebis);
 			//
-			creator = new B2WorldCreator(this);
+			creator = new B2WorldCreator(this,sauvegardebis);
 			//
 			world.setContactListener(new WorldContactListener());
 			//
@@ -247,7 +254,7 @@ public class PlayScreen implements Screen{
 			items = new Array<Item>();
 			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
 			//
-			hud = new Hud(game.batch,game.getLvl(),0,time,game.nbVies);
+			hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 			break;
 		case 5:
 
@@ -274,9 +281,9 @@ public class PlayScreen implements Screen{
 			world = new World(new Vector2(0, -10), true);
 			b2dr = new Box2DDebugRenderer();
 			
-			player = new Joueur(this,game,game.big,false);
+			player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
 			//
-			creator = new B2WorldCreator(this);
+			creator = new B2WorldCreator(this,sauvegardebis);
 			//
 			world.setContactListener(new WorldContactListener());
 			//
@@ -288,7 +295,7 @@ public class PlayScreen implements Screen{
 			items = new Array<Item>();
 			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
 			//
-			hud = new Hud(game.batch,game.getLvl(),0,time,game.nbVies);
+			hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 			break;
 		default:
 			waitJump = false;
@@ -312,9 +319,9 @@ public class PlayScreen implements Screen{
 			world = new World(new Vector2(0, -10), true);
 			b2dr = new Box2DDebugRenderer();
 			//
-			player = new Joueur(this,game,false,false);
+			player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
 			//
-			creator = new B2WorldCreator(this);
+			creator = new B2WorldCreator(this,sauvegardebis);
 			//
 			world.setContactListener(new WorldContactListener());
 			//
@@ -326,7 +333,7 @@ public class PlayScreen implements Screen{
 			items = new Array<Item>();
 			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
 			//
-			hud = new Hud(game.batch,game.getLvl(),0,time,game.nbVies);
+			hud = new Hud(game.batch,game.getLvl(),0,time,game.nbVies,sauvegardebis);
 			break;
 		}
 
@@ -426,18 +433,26 @@ public class PlayScreen implements Screen{
 
 
 	public void update(float dt) {
+
 		
 		if (changeNiveau) { //Si on doit changer de niveau, on vérifie l'état actuel du joueur pour lui remettre au lvl suivant.
 			if(player.isBig()) {
 				game.big = true;
+				
+				sauvegardebis.setBig(true);
 			} else {
 				game.big = false;
+				
+				sauvegardebis.setBig(false);
 			}
 			changeNiveau = false;
 			game.speedrunTimes[game.niveau-1] = hud.worldTimer; //Enregistrement du temps fait au niveau actuel. On utilise -1 car on commence au niveau 1 et non 0
 			if(game.niveau < nbNiveau) { //Si le niveau < 3, on continu et on lance le niveau suivant, sinon on termine la partie.
 				game.niveau = game.niveau+1;
-				game.setScreen(new PlayScreen((LpcAdventure) game,false,0));
+				
+				sauvegardebis.setNiveau(game.niveau);
+				
+				game.setScreen(new PlayScreen((LpcAdventure) game,false,0,sauvegardebis));
 			} else {
 				finJeu = true; 
 			}
@@ -467,11 +482,17 @@ public class PlayScreen implements Screen{
 				mobs.b2body.setActive(true);
 		}
 		
-		/*for(Mobs mobs: creator.getCrabe()) { //On fait spawn les mobs
+		for(Mobs mobs: creator.getCygne()) { //On fait spawn les mobs
 			mobs.update(dt);	
 			if(mobs.getX() < player.getX() + 224 / Joueur.PPM)
 				mobs.b2body.setActive(true);
-				}*/
+		}
+		
+		for(Mobs mobs: creator.getCrabe()) { //On fait spawn les mobs
+			mobs.update(dt);	
+			if(mobs.getX() < player.getX() + 224 / Joueur.PPM)
+				mobs.b2body.setActive(true);
+				}
 		
 		//On update les items actuellement spawn.
 		
@@ -505,7 +526,7 @@ public class PlayScreen implements Screen{
 		//
 		renderer.render();
 		
-		//
+		//HITBOX MONTRER
 		//b2dr.render(world, gamecam.combined);
 		
 		
@@ -519,8 +540,10 @@ public class PlayScreen implements Screen{
 		
 		for(Mobs mobs: creator.getBlackFlamingo())
 			mobs.draw(game.batch);
-		/*for(Mobs mobs: creator.getCrabe())
-			mobs.draw(game.batch);*/
+		for(Mobs mobs: creator.getCygne())
+			mobs.draw(game.batch);
+		for(Mobs mobs: creator.getCrabe())
+			mobs.draw(game.batch);
 		for(Item item: items)
 			item.draw(game.batch);
 		game.batch.end();
@@ -530,13 +553,18 @@ public class PlayScreen implements Screen{
 		hud.stage.draw();
 		
 		if(gameOver()  || finJeu) { // Si plus de vies, ou que la variable finJeu est activée, on lance la procédure de fin de partie
-			game.setScreen(new EndScreen(game,game));
+			game.setScreen(new EndScreen(game,game,sauvegardebis));
 			game.niveau = 1;
+			sauvegardebis.setVies(15);
+			sauvegardebis.setBig(false);
+			sauvegardebis.setNiveau(game.niveau);
+			
 			dispose();
 			
 		} else if (mort()) { //Si le joueur est mort, on le respawn au début de son niveau
+			sauvegardebis.setVies(game.nbVies-1);
 			game.nbVies = game.nbVies -1;
-			game.setScreen(new PlayScreen((LpcAdventure) game,false,time));
+			game.setScreen(new PlayScreen((LpcAdventure) game,false,time,sauvegardebis));
 		}
 		
 		

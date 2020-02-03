@@ -80,7 +80,7 @@ public class BlackFlamingo extends Mobs {
 
 		CircleShape shape = new CircleShape();
 
-		shape.setRadius(7 / Joueur.PPM);
+		shape.setRadius(6 / Joueur.PPM);
 		fdef.shape = shape;
 		
 		fdef.filter.categoryBits = LpcAdventure.MOBS_BIT;
@@ -139,6 +139,14 @@ public class BlackFlamingo extends Mobs {
 
         return region;
     }
+
+
+
+	@Override
+	public void hitOnHeadCygne(Joueur player) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

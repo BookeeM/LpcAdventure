@@ -6,6 +6,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 
 import fr.bouckdev.game.Screens.PlayScreen;
+import fr.bouckdev.game.Sprite.Joueur;
 
 public abstract class Mobs extends Sprite {
 
@@ -13,6 +14,7 @@ public abstract class Mobs extends Sprite {
 	protected PlayScreen screen;
 	public Body b2body;
 	public Vector2 velocity;
+	public Vector2 velocityCygne;
 	
 	
 	public Mobs(PlayScreen screen, float x, float y,boolean vole) {
@@ -23,20 +25,31 @@ public abstract class Mobs extends Sprite {
 		defineMob();
 		b2body.setActive(false);
 		velocity = new Vector2(-1, -2);	
+		velocityCygne =  new Vector2(-0.8f, -2);	
 	}
 	
 	protected abstract void defineMob();
 	public abstract void update(float dt);
 	public abstract void hitOnHead();
+	public abstract void hitOnHeadCygne(Joueur player);
 	
 	
-	public void reverseVelocity(boolean x, boolean y) {
+	public void reverseVelocity(boolean x, boolean y, boolean z) {
+		if(z) {
+			if(x)
+				velocityCygne.x = -velocityCygne.x;
+			if(y)
 		
-		if(x)
-			velocity.x = -velocity.x;
-		if(y)
-	
-			velocity.y = -velocity.y;
+				velocityCygne.y = -velocityCygne.y;
+		} else {
+			if(x)
+				velocity.x = -velocity.x;
+			if(y)
+		
+				velocity.y = -velocity.y;	
+		}
+			
+
 	}
 	
 	

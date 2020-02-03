@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import fr.bouckdev.game.LpcAdventure;
+import fr.bouckdev.game.Sauvegarde;
 
 public class EndScreen implements Screen{
 	
@@ -29,7 +30,9 @@ public class EndScreen implements Screen{
 	private int niv5;
 	private int niv6;
 	
-	public EndScreen(Game game, LpcAdventure lpcadventure) {
+	private Sauvegarde sauvegardebis;
+	
+	public EndScreen(Game game, LpcAdventure lpcadventure, Sauvegarde sauvegarde) {
 		
 		//Défini les temps fait aux niveaux en fin de game
 		niv1 = lpcadventure.speedrunTimes[0];
@@ -38,6 +41,8 @@ public class EndScreen implements Screen{
 		niv4 = lpcadventure.speedrunTimes[3];
 		niv5 = lpcadventure.speedrunTimes[4];
 		niv6 = lpcadventure.speedrunTimes[5];
+		
+		sauvegardebis = sauvegarde;
 			
 		this.game = game;
 		viewport = new FitViewport(LpcAdventure.V_WIDTH,LpcAdventure.V_HEIGHT,new OrthographicCamera());
@@ -86,7 +91,7 @@ public class EndScreen implements Screen{
 	public void render(float delta) {
 		//Si un bouton est appuyé, on recommence le jeu, new Playscreen défini le nouvel écran de jeu, ici on choisi Playscreen(écran de jeu)
 		if(Gdx.input.justTouched()) {
-			game.setScreen(new PlayScreen((LpcAdventure) game, true,0));
+			game.setScreen(new PlayScreen((LpcAdventure) game, true,0,sauvegardebis));
 			dispose();
 		}
 		Gdx.gl.glClearColor(0,0,0,1);

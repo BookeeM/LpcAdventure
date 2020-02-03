@@ -140,6 +140,14 @@ public class Crabe extends Mobs {
 
         return region;
     }
+
+
+
+	@Override
+	public void hitOnHeadCygne(Joueur player) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

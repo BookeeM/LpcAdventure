@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="347">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="359">
  <tileset firstgid="1" source="LpcAdventure.tsx"/>
  <layer id="8" name="background" width="240" height="13">
   <data encoding="base64" compression="zlib">
@@ -142,11 +142,7 @@
   <object id="208" x="1168" y="128" width="16" height="16"/>
  </objectgroup>
  <objectgroup id="6" name="BlackFlamingo">
-  <object id="239" x="1392" y="64" width="16" height="16"/>
-  <object id="241" x="768" y="112" width="16" height="16"/>
-  <object id="242" x="576" y="80" width="16" height="16"/>
   <object id="243" x="1680" y="176" width="16" height="16"/>
-  <object id="297" x="3200" y="64" width="16" height="16"/>
   <object id="299" x="2512" y="160" width="16" height="16"/>
   <object id="301" x="2624" y="160" width="16" height="16"/>
   <object id="302" x="2096" y="80" width="16" height="16"/>
@@ -158,5 +154,21 @@
  <objectgroup id="9" name="up">
   <object id="333" x="3168" y="0" width="16" height="16"/>
  </objectgroup>
- <objectgroup id="10" name="Crabe"/>
+ <objectgroup id="10" name="Crabe">
+  <object id="350" x="2544" y="160" width="16" height="16"/>
+  <object id="356" x="768" y="112" width="16" height="16"/>
+  <object id="357" x="1392" y="64" width="16" height="16"/>
+  <object id="358" x="3216" y="32" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="11" name="cygnebloc">
+  <object id="347" x="3456" y="208" width="64" height="16"/>
+  <object id="351" x="1808" y="208" width="64" height="16"/>
+  <object id="353" x="176" y="208" width="176" height="16"/>
+  <object id="354" x="160" y="192" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="12" name="cygne">
+  <object id="348" x="3488" y="192" width="16" height="16"/>
+  <object id="352" x="1840" y="192" width="16" height="16"/>
+  <object id="355" x="256" y="192" width="16" height="16"/>
+ </objectgroup>
 </map>

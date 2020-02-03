@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 import fr.bouckdev.game.LpcAdventure;
+import fr.bouckdev.game.Sauvegarde;
 import fr.bouckdev.game.Scenes.Hud;
 import fr.bouckdev.game.Screens.PlayScreen;
 import fr.bouckdev.game.Sprite.InteractiveTileObject;
@@ -18,11 +19,13 @@ public class upBloc extends InteractiveTileObject{
 	private static TiledMapTileSet tileSet;
 	
 	private final int BLANK_TROUSSE = 31;
-
+	
+	private Sauvegarde sauvegardebis;
 	
 	public upBloc(PlayScreen screen, Rectangle bounds) {
 		
 		super(screen,bounds);
+		//sauvegardebis = sauvegarde;
 		fixture.setUserData(this);
 		setCategoryFilter(LpcAdventure.TROUSSE_BIT);
 		tileSet = map.getTileSets().getTileSet("LpcAdventure");
@@ -43,6 +46,7 @@ public class upBloc extends InteractiveTileObject{
 			LpcAdventure.manager.get("audio/sounds/trousse.wav", Sound.class).play();	
 			screen.spawnItem(new ItemDef(new Vector2(body.getPosition().x, body.getPosition().y + 20 / Joueur.PPM),up.class));
 			getCell().setTile(tileSet.getTile(BLANK_TROUSSE));
+			sauvegardebis.setVideUp(getCell());
 
 		}
 		

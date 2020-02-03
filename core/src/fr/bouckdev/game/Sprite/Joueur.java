@@ -14,6 +14,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 
 import fr.bouckdev.game.LpcAdventure;
+import fr.bouckdev.game.Sauvegarde;
 import fr.bouckdev.game.Scenes.Hud;
 import fr.bouckdev.game.Screens.PlayScreen;
 import fr.bouckdev.game.Sprite.items.Item;
@@ -52,14 +53,18 @@ public class Joueur extends Sprite {
 	
 	private LpcAdventure jeu;
 	
+	private Sauvegarde sauvegardebis;
 	
 	
-	public Joueur(PlayScreen screen, LpcAdventure game,Boolean setGrand, Boolean flappy) {
+	
+	public Joueur(PlayScreen screen, LpcAdventure game,Boolean setGrand, Boolean flappy,Sauvegarde sauvegarde) {
 		
 
 
 		super(screen.getAtlas().findRegion("Entites"));
 		this.world = screen.getWorld();
+		
+		sauvegardebis = sauvegarde;
 		
 		screenbis = screen;
 		screen.flappy = flappy;
@@ -140,6 +145,10 @@ public class Joueur extends Sprite {
 		
 	}
 	
+	public void bounce() {
+		b2body.setLinearVelocity(new Vector2(b2body.getLinearVelocity().x, 4f));
+	}
+	
 	public TextureRegion getFrame(float dt) {
 		
 		currentState = getState();
@@ -205,6 +214,7 @@ public class Joueur extends Sprite {
 	public void grow() {
 		
 		joueurIsBig = true;
+		sauvegardebis.setBig(true);
 		
 	}
 	
@@ -222,7 +232,7 @@ public class Joueur extends Sprite {
 
 		CircleShape shape = new CircleShape();
 
-		shape.setRadius(7 / Joueur.PPM);
+		shape.setRadius(6 / Joueur.PPM);
 		fdef.shape = shape;
 		
 		fdef.filter.categoryBits = LpcAdventure.JOUEUR_BIT;
@@ -251,6 +261,7 @@ public class Joueur extends Sprite {
 
 	public void hit() {
 		
+		sauvegardebis.setBig(false);
 		if(joueurIsBig == true) {
 			joueurIsBig = false;
 			LpcAdventure.manager.get("audio/sounds/death.mp3", Sound.class).play();

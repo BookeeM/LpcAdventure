@@ -63,7 +63,7 @@ public class WorldContactListener implements ContactListener {
 						
 
 				break;
-		
+				
 			case LpcAdventure.MOBS_HEAD_BIT | LpcAdventure.JOUEUR_BIT:
 				
 				if(fixA.getFilterData().categoryBits == LpcAdventure.MOBS_HEAD_BIT)
@@ -71,11 +71,30 @@ public class WorldContactListener implements ContactListener {
 				else
 					((Mobs) fixB.getUserData()).hitOnHead();	
 				break;
+				
+			case LpcAdventure.MOBS_CYGNE_BIT | LpcAdventure.OBJECT_BIT:
+				if(fixA.getFilterData().categoryBits == LpcAdventure.MOBS_CYGNE_BIT) {
+					((Mobs) fixA.getUserData()).reverseVelocity(true,false, true);
+				} else {
+					((Mobs) fixB.getUserData()).reverseVelocity(true,false, true);
+					
+				}
+				break;
+				
+			case LpcAdventure.MOBS_CYGNEHEAD_BIT | LpcAdventure.JOUEUR_BIT:
+				
+				if(fixA.getFilterData().categoryBits == LpcAdventure.MOBS_CYGNEHEAD_BIT)
+					((Mobs) fixA.getUserData()).hitOnHeadCygne((Joueur) fixB.getUserData());
+				else
+					((Mobs) fixB.getUserData()).hitOnHeadCygne((Joueur) fixB.getUserData());	
+				
+				break;
+				
 			case LpcAdventure.MOBS_BIT | LpcAdventure.OBJECT_BIT:
 				if(fixA.getFilterData().categoryBits == LpcAdventure.MOBS_BIT) {
-					((Mobs) fixA.getUserData()).reverseVelocity(true,false);
+					((Mobs) fixA.getUserData()).reverseVelocity(true,false, false);
 				} else {
-					((Mobs) fixB.getUserData()).reverseVelocity(true,false);
+					((Mobs) fixB.getUserData()).reverseVelocity(true,false, false);
 					
 				}
 				break;	
@@ -87,16 +106,19 @@ public class WorldContactListener implements ContactListener {
                 	((Joueur) fixB.getUserData()).hit();
 				
 				break;
+				
 			case LpcAdventure.MOBS_BIT | LpcAdventure.MOBS_BIT:
-				((Mobs) fixA.getUserData()).reverseVelocity(true,false);
-				((Mobs) fixB.getUserData()).reverseVelocity(true,false);
+				((Mobs) fixA.getUserData()).reverseVelocity(true,false,false);
+				((Mobs) fixB.getUserData()).reverseVelocity(true,false,false);
 				break;
+				
 			case LpcAdventure.ITEM_BIT | LpcAdventure.OBJECT_BIT:
 				if(fixA.getFilterData().categoryBits == LpcAdventure.ITEM_BIT)
 					((Item) fixA.getUserData()).reverseVelocity(true,false);
 				else
 					((Item) fixB.getUserData()).reverseVelocity(true,false);
 				break;	
+				
 			case LpcAdventure.ITEM_BIT | LpcAdventure.JOUEUR_BIT:
 				if(fixA.getFilterData().categoryBits == LpcAdventure.ITEM_BIT) {
 					((Item) fixA.getUserData()).use((Joueur) fixB.getUserData());

@@ -1,12 +1,15 @@
 package fr.bouckdev.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import fr.bouckdev.game.Screens.PlayScreen;
+import fr.bouckdev.game.Screens.StartScreen;
 import fr.bouckdev.game.Sprite.blocs.FinNiveau;
 
 public class LpcAdventure extends Game{
@@ -27,6 +30,9 @@ public class LpcAdventure extends Game{
 	public static final short ITEM_BIT = 256;
 	public static final short JOUEUR_HEAD_BIT = 512;
 	public static final short FIN_BIT = 1024;
+	public static final short CYGNEBLOC_BIT = 2048;
+	public static final short MOBS_CYGNEHEAD_BIT = 4092;
+	public static final short MOBS_CYGNE_BIT = 8184;
 	public Integer niveau;
 	public Integer nbVies;
 	public static final int MENU = 1;
@@ -35,19 +41,29 @@ public class LpcAdventure extends Game{
 	public static AssetManager manager;
 	public int[] speedrunTimes;
 	public boolean big;
-	
-
-
-	
+	public Sauvegarde sauvegarde;
 
 	
 	@Override
 	public void create () {
 			//Définition de la partie + lancement
+		
+		
+			
+		
+			sauvegarde = new Sauvegarde();
+			niveau = sauvegarde.getLvl();
 			big = false;
 			speedrunTimes = new int[6];
-			niveau = 1;
-			nbVies = 15;
+			
+			speedrunTimes[1] = sauvegarde.getTemps(1);
+			speedrunTimes[2] = sauvegarde.getTemps(2);
+			speedrunTimes[3] = sauvegarde.getTemps(3);
+			speedrunTimes[4] = sauvegarde.getTemps(4);
+			speedrunTimes[5] = sauvegarde.getTemps(5);
+					
+			
+			nbVies = sauvegarde.getVies();
 			manager = new AssetManager();
 			manager.load("audio/music/flamingo.ogg", Music.class);
 			manager.load("audio/sounds/death.mp3", Sound.class);
@@ -57,14 +73,15 @@ public class LpcAdventure extends Game{
 			manager.finishLoading();
 			
 			batch = new SpriteBatch();
-			setScreen(new PlayScreen(this,false,0));
+			setScreen(new PlayScreen(this,false,sauvegarde.getTemps(niveau),sauvegarde));
+			//setScreen(new StartScreen(this,this,sauvegarde));
 			
 	}
 
 	@Override
 	public void render () {
 		
-		super.render(); // Déléguer les tâches à playscreen
+		super.render();
 		
 	}
 	
@@ -80,6 +97,10 @@ public class LpcAdventure extends Game{
 	
 	public Integer getLvl() { 
 		return niveau;
+	}
+	
+	public void Save() {
+		
 	}
 	
 	public void up() {

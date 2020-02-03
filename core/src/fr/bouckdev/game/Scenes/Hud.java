@@ -22,6 +22,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 import fr.bouckdev.game.LpcAdventure;
+import fr.bouckdev.game.Sauvegarde;
 import fr.bouckdev.game.Screens.PlayScreen;
 
 public class Hud implements Disposable{
@@ -51,7 +52,11 @@ public class Hud implements Disposable{
 	private TextureRegionDrawable texturegiondrawable;
 	private ImageButton button;
 	
-	public Hud(SpriteBatch sb, Integer niveauActuel, Integer scorePrecedent, Integer timerPrecedent, Integer nbVies) { //Définition du HUD visible en jeu
+	private Sauvegarde sauvegardebis;
+	
+	public Hud(SpriteBatch sb, Integer niveauActuel, Integer scorePrecedent, Integer timerPrecedent, Integer nbVies,Sauvegarde sauvegarde) { //Définition du HUD visible en jeu
+		
+		sauvegardebis = sauvegarde;
 		
 		score = scorePrecedent;	
 		worldTimer = timerPrecedent;
@@ -206,10 +211,14 @@ public class Hud implements Disposable{
 	}
 	
 	public void update(float dt,LpcAdventure game) { // Mise à jour du HUD (Niveau,vies)
-		
+	
 		timeCount += dt;
+		sauvegardebis.setScore(getScore());
+		
 		if(timeCount >= 1) {
 			
+
+			sauvegardebis.setTemps(game.niveau,worldTimer);
 			worldTimer+=1;
 			countdownLabel.setText(String.format("%03d",worldTimer));
 			nbVieLabel.setText(String.format("%02d", game.nbVies));
@@ -220,7 +229,7 @@ public class Hud implements Disposable{
 	}
 	
 	public static void addScore(int value) { //Fonction qui ajoute du score
-			
+
 		score += value;
 		scoreLabel.setText(String.format("%06d", score));
 		
