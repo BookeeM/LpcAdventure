@@ -92,10 +92,10 @@ public class BlackFlamingo extends Mobs {
 		
 		PolygonShape head = new PolygonShape();
 		Vector2[] vertice = new Vector2[4];
-		vertice[0] = new Vector2(-5, 8).scl(1 / Joueur.PPM);
-		vertice[1] = new Vector2(5, 8).scl(1 / Joueur.PPM);
-		vertice[2] = new Vector2(-3, 3).scl(1 / Joueur.PPM);
-		vertice[3] = new Vector2(3, 3).scl(1 / Joueur.PPM);
+		vertice[0] = new Vector2(-5, 10).scl(1 / Joueur.PPM);
+		vertice[1] = new Vector2(5, 10).scl(1 / Joueur.PPM);
+		vertice[2] = new Vector2(-3, 5).scl(1 / Joueur.PPM);
+		vertice[3] = new Vector2(3, 5).scl(1 / Joueur.PPM);
 		head.set(vertice);
 		
 		fdef.shape = head;
@@ -114,7 +114,7 @@ public class BlackFlamingo extends Mobs {
 		
 		Hud.addScore(300);
 		setToDestroy = true;
-		LpcAdventure.manager.get("audio/sounds/death.mp3",Sound.class).play();
+		LpcAdventure.manager.get("audio/sounds/death.ogg",Sound.class).play();
 		
 	}
 	

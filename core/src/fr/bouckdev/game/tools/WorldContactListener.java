@@ -81,6 +81,17 @@ public class WorldContactListener implements ContactListener {
 				}
 				break;
 				
+			case LpcAdventure.MOBS_PINGU_BIT | LpcAdventure.OBJECT_BIT:
+				if(fixA.getFilterData().categoryBits == LpcAdventure.MOBS_PINGU_BIT) {
+
+					
+				} else {
+
+					
+				}
+				break;
+				
+				
 			case LpcAdventure.MOBS_CYGNEHEAD_BIT | LpcAdventure.JOUEUR_BIT:
 				
 				if(fixA.getFilterData().categoryBits == LpcAdventure.MOBS_CYGNEHEAD_BIT)

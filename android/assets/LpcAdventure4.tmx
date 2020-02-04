@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="345">
+<map version="1.2" tiledversion="1.3.1" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="351">
  <tileset firstgid="1" source="LpcAdventure.tsx"/>
  <layer id="1" name="background" width="240" height="13">
   <data encoding="base64" compression="zlib">
-   eAHtVrsOwjAM7MDOTwJiA1bg47EHqxnixs3DdokrWamcx53ju6qXZVkuEXEHB9bAFbhbxA1wrSI8G9+tf9GAhXcR08q7iEu9e8C7pzgBnzQ8cQsuvrRC/XiCZiziBbhWQbW/gYOnSL27991THcFFT1cf0LBFfAHXKrzqa69nufVe6wte/X1t4V3EtPIu4nrXEefL2rxGvWe4Vwk/DS4zYYR/ffpZ4gXpGi09S/hocZkFJ/wb/u2l9ZJ/e+HEOatme/s310MOw+of+gj9z91jbU6j3hI3DQ4zYnDeasmXeknz4d/1O5rTHt1T7Zg7c1SuxHEU7uzntviU21vqZTpv4eEj9Ty9qz3v2jVKuGlzqsXDWri9ublcjtvfO895sDUv6SeuCf/yWsFeS++R1vXWh+Q8wpaMeB4+knOt1mAdHHZuLpfj9vfOt/p0a7+kn+FfXivUa8k9WmpIyo/WYV30UI1W4x2IjIzRdW35r3WO+rU1Wvr3Bz2EEmM=
+   eAHtVLsOwzAIzNC9PxlV3aquVT++MCB5MDZ+gVNdJOTIxuE47nIex3EiwAE00KyBB3EWFfAs/lvQwJgGorzLdWV2L3rfKW6EJ42dsAHLXlqJnsebtBoV0vuHMOwUqXdb33fqA1j20tWKeXzJO1Gxop8Z32z1rJY/Awu+8f8eHJlxlHe57ghuj7uaL3v3PTDfiVcLPg8sqLFe4/BvmWOLF6w5Xnq24PHCgjplfY3yA/+W+bV4wZozOivr/Roe63eQV9bGSn5yM9TqRXlYw7PTfo7H3j2PvmrYPDCgxhzf12Yp5/BvmW/hqXf11HMNoycW1CrrqsZPbZbpeYSHa/h3Ok+5ann37sGCzRtTbz3uRbubO8vtafevsm+ZJ+fAv7pWeNZWHiUvQh9S27IyPn4icFprch9abu4st6fdv9K+ZZ7wr64VmbWFx0gNWfFJHvclj/QYtT4JyMqI6mtGXZlXaY307w90ohEJ
   </data>
  </layer>
  <layer id="2" name="graphics" width="240" height="13">
   <data encoding="base64" compression="zlib">
-   eAHtWsFqVTEQLbjwiTtBuuqiIILYpa7bhbtCdeU3iPgr/rM58I6cjjNJ5r7c3Fd7A2Emk5kzk9w54Sm9uDiv8bKUo5PV/aLiyO+ObTftN5C5gaviPGJmcvb61urqxZjl96Yk0qlc7tFn1bnn+b9uoMaRzN5atxLVsFa+U3GVwxmdHD81/x7//G4g4kivfc0bi2pYM+dsbOU5eUw5qxbmq8lZtex58jcQ8aRlz2fKR3g15FHWiWC/A/39gBTKZegzhs1ZW8+oZ8+x7AY8ntRsy7Isi7J1LEMZGwXusteVx2OznA/arPdk5onx3ew4WMMTWVuO1NZbHEnr2SK/zUnuqvT6wcbt6/O5Ae9NQp89RQ6jZjuVM6pv8QW2zm/PrLxV3frt6zk30PoN5L2tHn9R7WgOW159mXMl//CZdYxK/zsJRA4nw4a7oxeUs6qPTOb1XC/+56PjiyIvy4Q810HuPZQCv1bmt7IX3Qm/QXRGj6ueDfHsM/T7jQNY+7+O6+JPnlASjxL25zh4/i3PXuMu+iHqr0zN7MVT8O4aCcmZhlt4nk+twM59/B0Lz9sTAl8dfKdgs3vq5+15tncliH0GSQ5aCWxr41rjIx2+S4b3nizB2SKGd7FFbubEN2/NUzhssYG15Jvds2BHApN5nO1HJvh557l95BUv7N+gAUvxMrUgC+rRcaeLQTr7rCaRqrbfs0e+e2V7e9Zm1x5Oxka8rOzNwTvp9R/phz7UXmP/RzKT+2NxjnBgZ8+rjPDVB7r+JuXvT80V4dBOX4uLtQ7ut2zEox/XkD0Dfq/EsfZOidtftfctZK9FEoDRXtYOvthBDLVbm12rL/W3R4Xnfn1cRxwlZlYyX00S82dxmjHZk5Taay0dMT86ZwvL24+wra/1a+1bf6xtDNfqu9TGOEjFi3T4gb+1fyfr3oeEL+PwzrHXIon6or0l9kPB0zMTo2bzfNQf+iGYjB0tbX5dM9cf/mBrJw==
+   eAHtWsGKVTEMHXDhE3fC4MrFgAiiy5m1s3AnjK78BhG/wT/wn+2Bd4YzMWmb+3p73zi3UJKmyUnam1OeMhcX5zWel3J0srpfVBz53bHtpv0GMjfwpjiPmJmcvb61unoxZvm9Kol0Kpd79Fl17nn+rxuocSSzt9atRDWsle9UXOVwRifHT82/xz+9G4g40mtf88aiGtbMORtbeU4eU86qhflqclYte578DUQ8adnzmfIRXg15lHUi2O9AfzcghXIZ+oxhc9bWM+rZcyy7AY8nNduyLMuibB3LUMZGgbvsdeXx2CzngzbrPZl5Ynw3Ow7W8EjWliO19RZH0nq2yG9zkrsqvX6wcfv6fG7Ae5PQZ4+Rw6jZTuWM6lt8ga3z2zMrb1W3fvt6zg20fgN5b6vHX1Q7msOWV5/nXMk/fGYdo9L/SQKRw8mw4e7oBeWs6iOTeT3Xi39zdHxW5OsyIc91kHt3pcCvlfmt7EV3wm8QndHjqmdDPPsM/f7RAaz9X8dV8SdPKIlHCftTHDz/lmevcRf9EPVXpmb24il4t42E5EzDLTzPdSuwcx9/x8Lz9oTAVwffKdjsnvp5e57tbQlin0GSg1YC29q41vhIh++S4b0nS3C2iOFdbJGbOfHNW/MUDltsYC35Zl9YsCOByTzO9gMT/LzzfHrgFS/s36ABS/EytSAL6tFxq4tBOvusJpGqtt+zR757ZXt71mbXHk7GRrys7M3BO+n1H+mHPtReY/9HMpP7Q3GOcGBnz6uM8NUHuv4m5e9PzRXh0E5fi4u1Du63bMSjH9eQPQN+L8Sx9k6J273a+xay1yIJwGgvawdf7CCG2q3NrtWX+uVR4blfHtcRR4mZlcxXk8T8WZxmTPYkpfZaS0fMj87ZwvL2I2zra/1a+9YfaxvDtfoutTEOUvEiHX7gb+3fybr3PuHLOLxz7LVIor5ob4n9UPD0zMSo2Twf9Yd+CCZjR8vfJV80mesvDN9rwQ==
   </data>
  </layer>
  <objectgroup id="3" name="ground">
@@ -114,4 +114,11 @@
  <objectgroup id="9" name="Crabe"/>
  <objectgroup id="10" name="cygnebloc"/>
  <objectgroup id="11" name="cygne"/>
+ <objectgroup id="12" name="pingu">
+  <object id="345" x="960" y="16" width="16" height="16"/>
+  <object id="346" x="352" y="64" width="16" height="16"/>
+  <object id="348" x="1632" y="16" width="16" height="16"/>
+  <object id="349" x="2400" y="32" width="16" height="16"/>
+ </objectgroup>
+ <objectgroup id="13" name="pingujump"/>
 </map>

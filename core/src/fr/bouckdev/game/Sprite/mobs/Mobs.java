@@ -1,5 +1,7 @@
 package fr.bouckdev.game.Sprite.mobs;
 
+import java.util.Random;
+
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -15,7 +17,7 @@ public abstract class Mobs extends Sprite {
 	public Body b2body;
 	public Vector2 velocity;
 	public Vector2 velocityCygne;
-	
+	public boolean jump;
 	
 	public Mobs(PlayScreen screen, float x, float y,boolean vole) {
 		
@@ -25,7 +27,8 @@ public abstract class Mobs extends Sprite {
 		defineMob();
 		b2body.setActive(false);
 		velocity = new Vector2(-1, -2);	
-		velocityCygne =  new Vector2(-0.8f, -2);	
+		velocityCygne =  new Vector2(-0.8f, -2);
+		jump = false;
 	}
 	
 	protected abstract void defineMob();
@@ -52,7 +55,16 @@ public abstract class Mobs extends Sprite {
 
 	}
 	
-	
+	public static int getRandomNumberInRange(int min, int max) {
+
+		if (min >= max) {
+			throw new IllegalArgumentException("max must be greater than min");
+		}
+
+		Random r = new Random();
+		return r.nextInt((max - min) + 1) + min;
+	}
+
 	
 	
 }

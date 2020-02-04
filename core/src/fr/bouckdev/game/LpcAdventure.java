@@ -33,11 +33,13 @@ public class LpcAdventure extends Game{
 	public static final short CYGNEBLOC_BIT = 2048;
 	public static final short MOBS_CYGNEHEAD_BIT = 4092;
 	public static final short MOBS_CYGNE_BIT = 8184;
+	public static final short MOBS_PINGU_BIT = 16368;
+	//public static final short PINGUJUMP_BIT = 32736;
 	public Integer niveau;
 	public Integer nbVies;
-	public static final int MENU = 1;
+	/*public static final int MENU = 1;
 	public static final int JEU = 2;
-	public static final int OPTIONS = 3;
+	public static final int OPTIONS = 3;*/
 	public static AssetManager manager;
 	public int[] speedrunTimes;
 	public boolean big;
@@ -66,10 +68,11 @@ public class LpcAdventure extends Game{
 			nbVies = sauvegarde.getVies();
 			manager = new AssetManager();
 			manager.load("audio/music/flamingo.ogg", Music.class);
-			manager.load("audio/sounds/death.mp3", Sound.class);
+			manager.load("audio/sounds/death.ogg", Sound.class);
 			manager.load("audio/sounds/breaking.wav", Sound.class);
 			manager.load("audio/sounds/trousse.wav", Sound.class);
 			manager.load("audio/sounds/bump.mp3", Sound.class);
+			manager.load("audio/sounds/jump.wav", Sound.class);
 			manager.finishLoading();
 			
 			batch = new SpriteBatch();

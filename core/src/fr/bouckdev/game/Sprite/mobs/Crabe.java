@@ -81,7 +81,7 @@ public class Crabe extends Mobs {
 
 		CircleShape shape = new CircleShape();
 
-		shape.setRadius(7 / Joueur.PPM);
+		shape.setRadius(5 / Joueur.PPM);
 		fdef.shape = shape;
 		
 		fdef.filter.categoryBits = LpcAdventure.MOBS_BIT;
@@ -93,10 +93,10 @@ public class Crabe extends Mobs {
 		
 		PolygonShape head = new PolygonShape();
 		Vector2[] vertice = new Vector2[4];
-		vertice[0] = new Vector2(-5, 8).scl(1 / Joueur.PPM);
-		vertice[1] = new Vector2(5, 8).scl(1 / Joueur.PPM);
-		vertice[2] = new Vector2(-3, 3).scl(1 / Joueur.PPM);
-		vertice[3] = new Vector2(3, 3).scl(1 / Joueur.PPM);
+		vertice[0] = new Vector2(-1, 3).scl(1 / Joueur.PPM);
+		vertice[1] = new Vector2(1, 3).scl(1 / Joueur.PPM);
+		vertice[2] = new Vector2(-1, 1).scl(1 / Joueur.PPM);
+		vertice[3] = new Vector2(1, 1).scl(1 / Joueur.PPM);
 		head.set(vertice);
 		
 		fdef.shape = head;
@@ -115,7 +115,7 @@ public class Crabe extends Mobs {
 		
 		Hud.addScore(300);
 		setToDestroy = true;
-		LpcAdventure.manager.get("audio/sounds/death.mp3",Sound.class).play();
+		LpcAdventure.manager.get("audio/sounds/death.ogg",Sound.class).play();
 		
 	}
 	

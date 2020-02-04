@@ -36,7 +36,7 @@ public class Hud implements Disposable{
 	public float timeCount;
 	public static Integer score;
 	
-    boolean upPressed, downPressed, leftPressed, rightPressed;
+    boolean upPressed, downPressed, leftPressed, rightPressed,escapePressed;
 	
 	private Label countdownLabel;
 	private static Label scoreLabel;
@@ -51,6 +51,7 @@ public class Hud implements Disposable{
 	private TextureRegion textureregion;
 	private TextureRegionDrawable texturegiondrawable;
 	private ImageButton button;
+	
 	
 	private Sauvegarde sauvegardebis;
 	
@@ -69,6 +70,7 @@ public class Hud implements Disposable{
 		Table controlsLeft = new Table();
 		Table controlsJump = new Table();
 		Table controlsRight = new Table();
+		Table controlsRestart = new Table();
 		table.top();
 		table.setFillParent(true);
 		
@@ -114,6 +116,9 @@ public class Hud implements Disposable{
 		                    case Input.Keys.RIGHT:
 		                        rightPressed = true;
 		                        break;
+		                    case Input.Keys.ESCAPE:
+		                    	escapePressed = true;
+		                    	break;
 		                }
 		                return true;
 		            }
@@ -133,6 +138,9 @@ public class Hud implements Disposable{
 		                    case Input.Keys.RIGHT:
 		                        rightPressed = false;
 		                        break;
+		                    case Input.Keys.ESCAPE:
+		                    	escapePressed = true;
+		                    	break;
 		                }
 		                return true;
 		            }
@@ -140,6 +148,24 @@ public class Hud implements Disposable{
 
 		        Gdx.input.setInputProcessor(stage);
 			
+		    Image restartImg = new Image(new Texture("restart.png"));
+		    restartImg.setColor(1,1,1,0.5f);
+		    restartImg.setSize(20,20);    
+		    restartImg.addListener(new InputListener() {
+		    	
+		    	@Override
+	            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+	                escapePressed = true;
+	                return true;
+	            }
+
+	            @Override
+	            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+	            	escapePressed = false;
+	            }
+	            
+		    });	    
+		    
 		    Image upImg = new Image(new Texture("flatDark25.png"));
 		    upImg.setColor(1,1,1,0.5f);
 		    upImg.setSize(50,50);    
@@ -200,7 +226,10 @@ public class Hud implements Disposable{
 		    controlsRight.add(rightImg).size(rightImg.getWidth(), rightImg.getHeight()).padBottom(rightImg.getHeight()).padLeft(rightImg.getWidth()*6+ game.V_WIDTH+30);
 		    controlsLeft.add(leftImg).size(leftImg.getWidth(), leftImg.getHeight()).padBottom(leftImg.getHeight()).padLeft(leftImg.getWidth()*4+ game.V_WIDTH -10);
 		    controlsJump.add(upImg).size(upImg.getWidth(), upImg.getHeight()).padBottom(upImg.getHeight()).padLeft(upImg.getWidth()*2);
+		    controlsRestart.add(restartImg).size(restartImg.getWidth(), restartImg.getHeight()).padBottom(restartImg.getHeight()*12).padLeft(restartImg.getWidth()*2);
 		
+		    stage.addActor(controlsRestart);
+		    
 	   if(Gdx.app.getType() == ApplicationType.Android) { // Si on est sur android, on rend le HUD des contrôles
 
 			stage.addActor(controlsLeft);
@@ -265,8 +294,12 @@ public class Hud implements Disposable{
 	public float getTimer() {
 		return worldTimer;
 	}
-	
 
+	public boolean isEscapePressed() {
+		// TODO Auto-generated method stub
+		return escapePressed;
+	}
+	
 
 }
 

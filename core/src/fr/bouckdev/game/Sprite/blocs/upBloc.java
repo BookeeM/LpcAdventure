@@ -46,7 +46,6 @@ public class upBloc extends InteractiveTileObject{
 			LpcAdventure.manager.get("audio/sounds/trousse.wav", Sound.class).play();	
 			screen.spawnItem(new ItemDef(new Vector2(body.getPosition().x, body.getPosition().y + 20 / Joueur.PPM),up.class));
 			getCell().setTile(tileSet.getTile(BLANK_TROUSSE));
-			sauvegardebis.setVideUp(getCell());
 
 		}
 		

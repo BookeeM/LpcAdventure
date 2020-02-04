@@ -7,6 +7,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -69,6 +70,7 @@ public class PlayScreen implements Screen{
 	private B2WorldCreator creator;
 	private Integer jump;
 	private boolean waitJump;
+	public boolean reset;
 
 	public boolean changeNiveau;
 	public boolean finJeu;
@@ -85,14 +87,15 @@ public class PlayScreen implements Screen{
 
 		
 		nbNiveau = 5;
+		reset = false;
 		decel = false;
 		finJeu = false;
 		flappy = false;
 		sauvegardebis = sauvegarde;
-		//On regarde quel niveau doit être enclenché.
+		//On regarde quel niveau doit ï¿½tre enclenchï¿½.
 		switch(game.niveau) {			
 		case 1:
-			if(restart) { // Si le joueur est simplement mort (et il a encore des vies), restart vaut true, et il va juste être remis au début du monde)
+			if(restart) { // Si le joueur est simplement mort (et il a encore des vies), restart vaut true, et il va juste ï¿½tre remis au dï¿½but du monde)
 				game.niveau = 1;
 				game.nbVies = 15;
 			}
@@ -125,7 +128,7 @@ public class PlayScreen implements Screen{
 			//
 			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
 			music.setLooping(true);
-			music.setVolume((float) 0.015);
+			music.setVolume((float) 1);
 			music.play();
 			//
 			items = new Array<Item>();
@@ -166,7 +169,7 @@ public class PlayScreen implements Screen{
 			//
 			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
 			music.setLooping(true);
-			music.setVolume((float) 0.015);
+			music.setVolume((float) 1);
 			music.play();
 			//
 			items = new Array<Item>();
@@ -207,7 +210,7 @@ public class PlayScreen implements Screen{
 			//
 			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
 			music.setLooping(true);
-			music.setVolume((float) 0.015);
+			music.setVolume((float) 1);
 			music.play();
 			//
 			items = new Array<Item>();
@@ -248,7 +251,7 @@ public class PlayScreen implements Screen{
 			//
 			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
 			music.setLooping(true);
-			music.setVolume((float) 0.015);
+			music.setVolume((float) 1);
 			music.play();
 			//
 			items = new Array<Item>();
@@ -289,7 +292,7 @@ public class PlayScreen implements Screen{
 			//
 			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
 			music.setLooping(true);
-			music.setVolume((float) 0.015);
+			music.setVolume((float) 1);
 			music.play();
 			//
 			items = new Array<Item>();
@@ -327,7 +330,7 @@ public class PlayScreen implements Screen{
 			//
 			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
 			music.setLooping(true);
-			music.setVolume((float) 0.015);
+			music.setVolume((float) 1);
 			music.play();
 			//
 			items = new Array<Item>();
@@ -340,7 +343,7 @@ public class PlayScreen implements Screen{
 	}
 	
  
-	public void spawnItem(ItemDef idef) { //Ajout des Items à spawn 
+	public void spawnItem(ItemDef idef) { //Ajout des Items ï¿½ spawn 
 		
 		itemsToSpawn.add(idef);
 		
@@ -375,67 +378,83 @@ public class PlayScreen implements Screen{
 		
 	}
 	
-	public void handleInput(float dt) { //Définition des contrôles de jeu.
+	public void handleInput(float dt) { //Dï¿½finition des contrï¿½les de jeu.
 		
-		if(flappy) {
-			if(hud.isUpPressed()) {
-				player.b2body.applyLinearImpulse(new Vector2(0.1f, 0f), player.b2body.getWorldCenter(), true);
-				player.b2body.setLinearVelocity(new Vector2(0, 1.8f));	
-			}
-			if(player.b2body.getLinearVelocity().x <= 1.1)
-				player.b2body.applyLinearImpulse(new Vector2(1.1f, 0f), player.b2body.getWorldCenter(), true);
-		} else {
-			if(hud.isUpPressed()) {
-				if(jump == 1) {
-					waitJump = true;
-					if(player.isBig() == true) {	
-						player.b2body.applyLinearImpulse(new Vector2(0, 3.4f), player.b2body.getWorldCenter(), true);	
-						jump = 2;
-					} else {
-						player.b2body.applyLinearImpulse(new Vector2(0, 3.1f), player.b2body.getWorldCenter(), true);
-						jump = 2;
-					}
-				} else if(jump == 2) {
-					
-					if(waitJump == false) {
-						jump = 0;	
-						player.b2body.setLinearVelocity(new Vector2(player.b2body.getLinearVelocity().x, player.b2body.getLinearVelocity().y + 2f));
-					}
-					
-				} else {
-					jump = 0;
+			if(flappy) {
+				if(hud.isUpPressed()) {
+					player.b2body.applyLinearImpulse(new Vector2(0.1f, 0f), player.b2body.getWorldCenter(), true);
+					player.b2body.setLinearVelocity(new Vector2(0, 1.8f));
 				}
-
-			}
-			
-			if(hud.isRightPressed() || hud.isLeftPressed()) {
-				if(hud.isRightPressed() && player.b2body.getLinearVelocity().x <= 1.1) 	
-					player.b2body.applyLinearImpulse(new Vector2(0.07f, 0), player.b2body.getWorldCenter(), true);
-					decel = true;
-				if(hud.isLeftPressed() && player.b2body.getLinearVelocity().x >= -1.1)		
-					player.b2body.applyLinearImpulse(new Vector2(-0.07f, 0), player.b2body.getWorldCenter(), true);
-					decel = true;
+				if(hud.isEscapePressed()) {
+					reset = true;
+				}
+				
+				if(player.b2body.getLinearVelocity().x <= 1.1)
+					player.b2body.applyLinearImpulse(new Vector2(1.1f, 0f), player.b2body.getWorldCenter(), true);
+	
 			} else {
-				if(decel) {
-					decel = false;
-					if(player.b2body.getLinearVelocity().y == 0) 
-						player.b2body.applyLinearImpulse(new Vector2(-player.b2body.getLinearVelocity().x/1.5f, 0), player.b2body.getWorldCenter(), true);	
-				} else {
+				if(hud.isEscapePressed()) {
+					reset = true;
+				}
+				if(player.isDead() != true) {
+					if(hud.isUpPressed()) {
 						
-					if(player.b2body.getLinearVelocity().x > 1.5){
-						player.b2body.applyLinearImpulse(new Vector2(-player.b2body.getLinearVelocity().x/1.5f, 0), player.b2body.getWorldCenter(), true);					
-					}					
-				}					
+						if(jump == 1) {
+							waitJump = true;
+							if(player.isBig() == true) {	
+								player.b2body.applyLinearImpulse(new Vector2(0, 3.4f), player.b2body.getWorldCenter(), true);	
+								jump = 2;
+							} else {
+								player.b2body.applyLinearImpulse(new Vector2(0, 3.1f), player.b2body.getWorldCenter(), true);
+								jump = 2;
+							}
+						} else if(jump == 2) {
+
+							if(waitJump == false) {
+								jump = 0;	
+								player.b2body.setLinearVelocity(new Vector2(player.b2body.getLinearVelocity().x, player.b2body.getLinearVelocity().y + 2f));
+							}
+							
+						} else {
+							jump = 0;
+						}
+
+					}
+					
+					if(hud.isRightPressed() || hud.isLeftPressed()) {
+						if(hud.isRightPressed() && player.b2body.getLinearVelocity().x <= 1.1) 	
+							player.b2body.applyLinearImpulse(new Vector2(0.07f, 0), player.b2body.getWorldCenter(), true);
+							decel = true;
+						if(hud.isLeftPressed() && player.b2body.getLinearVelocity().x >= -1.1)		
+							player.b2body.applyLinearImpulse(new Vector2(-0.07f, 0), player.b2body.getWorldCenter(), true);
+							decel = true;
+					} else {
+						if(decel) {
+							decel = false;
+							if(player.b2body.getLinearVelocity().y == 0) 
+								player.b2body.applyLinearImpulse(new Vector2(-player.b2body.getLinearVelocity().x/1.5f, 0), player.b2body.getWorldCenter(), true);	
+						} else {
+								
+							if(player.b2body.getLinearVelocity().x > 1.5){
+								player.b2body.applyLinearImpulse(new Vector2(-player.b2body.getLinearVelocity().x/1.5f, 0), player.b2body.getWorldCenter(), true);					
+							}					
+						}					
+					}
+
+				}
 			}
-		}
 						
 	}
 
 
 	public void update(float dt) {
-
 		
-		if (changeNiveau) { //Si on doit changer de niveau, on vérifie l'état actuel du joueur pour lui remettre au lvl suivant.
+		if(reset) {
+			player.gameOver = true;
+
+		}
+		
+		if (changeNiveau) { //Si on doit changer de niveau, on vï¿½rifie l'ï¿½tat actuel du joueur pour lui remettre au lvl suivant.
 			if(player.isBig()) {
 				game.big = true;
 				
@@ -460,11 +479,11 @@ public class PlayScreen implements Screen{
 
 		}
 		
-		if (player.b2body.getLinearVelocity().y == 0) { //Pour le saut, si la valeur sur l'axe y vaut 0, on remet son habilité à sauter à 1. 1 = jump 2= double jump -> Plus de possibilité de sauter
+		if (player.b2body.getLinearVelocity().y == 0) { //Pour le saut, si la valeur sur l'axe y vaut 0, on remet son habilitï¿½ ï¿½ sauter ï¿½ 1. 1 = jump 2= double jump -> Plus de possibilitï¿½ de sauter
 			jump = 1;
 		}
 		
-		if (player.b2body.getLinearVelocity().y < 0.5) { //L'attente avant de pouvoir resauter (double jump) est reset quand la vitesse de saut n'est pas trop élévée pour éviter de donner de trop gros avantages lors d'un saut
+		if (player.b2body.getLinearVelocity().y < 0.5) { //L'attente avant de pouvoir resauter (double jump) est reset quand la vitesse de saut n'est pas trop ï¿½lï¿½vï¿½e pour ï¿½viter de donner de trop gros avantages lors d'un saut
 			waitJump = false;
 		}
 		
@@ -492,7 +511,13 @@ public class PlayScreen implements Screen{
 			mobs.update(dt);	
 			if(mobs.getX() < player.getX() + 224 / Joueur.PPM)
 				mobs.b2body.setActive(true);
-				}
+		}
+		
+		for(Mobs mobs: creator.getPingu()) { //On fait spawn les mobs
+			mobs.update(dt);	
+			if(mobs.getX() < player.getX() + 224 / Joueur.PPM)
+				mobs.b2body.setActive(true);
+		}
 		
 		//On update les items actuellement spawn.
 		
@@ -512,7 +537,7 @@ public class PlayScreen implements Screen{
 	}
 
 	@Override
-	public void render(float delta) { // Rend à l'écran les éléments du jeu
+	public void render(float delta) { // Rend ï¿½ l'ï¿½cran les ï¿½lï¿½ments du jeu
 		
 		
 		time = getTime();
@@ -544,6 +569,8 @@ public class PlayScreen implements Screen{
 			mobs.draw(game.batch);
 		for(Mobs mobs: creator.getCrabe())
 			mobs.draw(game.batch);
+		for(Mobs mobs: creator.getPingu())
+			mobs.draw(game.batch);
 		for(Item item: items)
 			item.draw(game.batch);
 		game.batch.end();
@@ -552,16 +579,15 @@ public class PlayScreen implements Screen{
 		game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
 		hud.stage.draw();
 		
-		if(gameOver()  || finJeu) { // Si plus de vies, ou que la variable finJeu est activée, on lance la procédure de fin de partie
+		if(gameOver()  || finJeu) { // Si plus de vies, ou que la variable finJeu est activï¿½e, on lance la procï¿½dure de fin de partie
+			
 			game.setScreen(new EndScreen(game,game,sauvegardebis));
 			game.niveau = 1;
-			sauvegardebis.setVies(15);
-			sauvegardebis.setBig(false);
-			sauvegardebis.setNiveau(game.niveau);
+			sauvegardebis.reset();
 			
 			dispose();
 			
-		} else if (mort()) { //Si le joueur est mort, on le respawn au début de son niveau
+		} else if (mort()) { //Si le joueur est mort, on le respawn au dï¿½but de son niveau
 			sauvegardebis.setVies(game.nbVies-1);
 			game.nbVies = game.nbVies -1;
 			game.setScreen(new PlayScreen((LpcAdventure) game,false,time,sauvegardebis));

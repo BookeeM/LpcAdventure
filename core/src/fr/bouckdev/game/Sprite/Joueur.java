@@ -45,7 +45,7 @@ public class Joueur extends Sprite {
 	public boolean runningRight;
 	private float stateTimer;
 	private boolean joueurIsBig;
-	private boolean gameOver;
+	public boolean gameOver;
 	
 	public boolean flappyb;
 	
@@ -264,11 +264,11 @@ public class Joueur extends Sprite {
 		sauvegardebis.setBig(false);
 		if(joueurIsBig == true) {
 			joueurIsBig = false;
-			LpcAdventure.manager.get("audio/sounds/death.mp3", Sound.class).play();
+			LpcAdventure.manager.get("audio/sounds/death.ogg", Sound.class).play();
 			setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() + 2 / 2);
 		} else {
 		
-			LpcAdventure.manager.get("audio/sounds/death.mp3", Sound.class).play();
+			LpcAdventure.manager.get("audio/sounds/death.ogg", Sound.class).play();
 			joueurIsDead = true;
 			if(jeu.nbVies > 0) {
 				

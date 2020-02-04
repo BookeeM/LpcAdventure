@@ -22,12 +22,14 @@ import fr.bouckdev.game.Sprite.blocs.upBloc;
 import fr.bouckdev.game.Sprite.mobs.BlackFlamingo;
 import fr.bouckdev.game.Sprite.mobs.Crabe;
 import fr.bouckdev.game.Sprite.mobs.Cygne;
+import fr.bouckdev.game.Sprite.mobs.Pingu;
 
 public class B2WorldCreator {
 	
 	private Array<BlackFlamingo> blackflamingo;
 	private Array<Crabe> crabe;
 	private Array<Cygne> cygne;
+	private Array<Pingu> pingu;
 	private Sauvegarde sauvegardebis;
 	
 	public B2WorldCreator(PlayScreen screen, Sauvegarde sauvegarde) {
@@ -129,6 +131,31 @@ public class B2WorldCreator {
 		}
 		
 		
+		pingu = new Array<Pingu>();
+		for(MapObject object : map.getLayers().get(11).getObjects().getByType(RectangleMapObject.class))  {// 2 = couche de calque à partir de laquelle y a des objets. à faire autant de fois que dobjets
+			
+			Rectangle rect = ((RectangleMapObject) object).getRectangle();
+			
+			pingu.add(new Pingu(screen, rect.getX()/ Joueur.PPM, rect.getY() / Joueur.PPM));
+		}
+		
+	/*	for(MapObject object : map.getLayers().get(12).getObjects().getByType(RectangleMapObject.class))  {// 2 = couche de calque à partir de laquelle y a des objets. à faire autant de fois que dobjets
+			
+			Rectangle rect = ((RectangleMapObject) object).getRectangle();
+			bdef.type = BodyDef.BodyType.StaticBody;
+			bdef.position.set((rect.getX() + rect.getWidth() / 2 ) / Joueur.PPM, (rect.getY() + rect.getHeight() / 2) / Joueur.PPM);
+			body = world.createBody(bdef);
+			
+			shape.setAsBox(rect.getWidth() / 2 / Joueur.PPM, rect.getHeight()/2 / Joueur.PPM);
+			fdef.shape = shape;
+			fdef.filter.categoryBits = LpcAdventure.PINGUJUMP_BIT;
+			body.createFixture(fdef);
+			
+		} */
+		
+		
+		
+		
 		
 		
 	}
@@ -137,6 +164,10 @@ public class B2WorldCreator {
 		
 		return blackflamingo;
 		
+	}
+	
+	public Array<Pingu> getPingu() {
+		return pingu;
 	}
 
 	public Array<Crabe> getCrabe() {
