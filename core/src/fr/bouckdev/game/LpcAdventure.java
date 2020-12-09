@@ -76,8 +76,8 @@ public class LpcAdventure extends Game{
 			manager.finishLoading();
 			
 			batch = new SpriteBatch();
-			setScreen(new PlayScreen(this,false,sauvegarde.getTemps(niveau),sauvegarde));
 			//setScreen(new StartScreen(this,this,sauvegarde));
+			setScreen(new PlayScreen(this,false,sauvegarde.getTemps(niveau),sauvegarde));
 			
 	}
 
