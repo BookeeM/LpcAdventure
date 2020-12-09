@@ -84,261 +84,60 @@ public class PlayScreen implements Screen{
 	
 	public PlayScreen(LpcAdventure game, Boolean restart, Integer time, Sauvegarde sauvegarde) {
 		
-
-		
 		nbNiveau = 5;
 		reset = false;
 		decel = false;
 		finJeu = false;
 		flappy = false;
 		sauvegardebis = sauvegarde;
-		//On regarde quel niveau doit être enclenché.
+		waitJump = false;
+		jump = 0;
+		changeNiveau = false;
+		atlas = new TextureAtlas("LpcAEntites.pack");
+		this.game = game;
+		gamecam = new OrthographicCamera();
+		gamePort = new FitViewport(LpcAdventure.V_WIDTH / Joueur.PPM, LpcAdventure.V_HEIGHT / Joueur.PPM, gamecam);
+		maploader = new TmxMapLoader(); 
+		
 		switch(game.niveau) {			
 		case 1:
 			if(restart) { // Si le joueur est simplement mort (et il a encore des vies), restart vaut true, et il va juste être remis au début du monde)
 				game.niveau = 1;
 				game.nbVies = 15;
 			}
-			waitJump = false;
-			jump = 0;
-			changeNiveau = false;
-			atlas = new TextureAtlas("LpcAEntites.pack");
-			//
-			this.game = game;
-			gamecam = new OrthographicCamera();
-			gamePort = new FitViewport(LpcAdventure.V_WIDTH / Joueur.PPM, LpcAdventure.V_HEIGHT / Joueur.PPM, gamecam);
-			//
-			//
-			maploader = new TmxMapLoader(); 
 			map = maploader.load("LpcAdventure2.tmx");
-
-
-			renderer = new OrthogonalTiledMapRenderer(map, 1 / Joueur.PPM);
-			//
-			gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight() / 2, 0);
-			//
-			world = new World(new Vector2(0, -10), true);
-			b2dr = new Box2DDebugRenderer();
-			//
-			player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
-			//
-			creator = new B2WorldCreator(this,sauvegardebis);
-			//
-			world.setContactListener(new WorldContactListener());
-			//
-			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
-			music.setLooping(true);
-			music.setVolume((float) 1);
-			music.play();
-			//
-			items = new Array<Item>();
-			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
-			//
-			hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 			break;
 		case 2:
-
-			waitJump = false;
-			jump = 0;
-			changeNiveau = false;
-			atlas = new TextureAtlas("LpcAEntites.pack");
-			//
-			this.game = game;
-			gamecam = new OrthographicCamera();
-			gamePort = new FitViewport(LpcAdventure.V_WIDTH / Joueur.PPM, LpcAdventure.V_HEIGHT / Joueur.PPM, gamecam);
-			//
-			
-			
-			//
-			maploader = new TmxMapLoader(); 
 			map = maploader.load("LpcAdventure3.tmx");
-
-
-			renderer = new OrthogonalTiledMapRenderer(map, 1 / Joueur.PPM);
-			//
-			gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight() / 2, 0);
-			//
-			world = new World(new Vector2(0, -10), true);
-			b2dr = new Box2DDebugRenderer();
-			
-			player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
-			//
-			creator = new B2WorldCreator(this,sauvegardebis);
-			//
-			world.setContactListener(new WorldContactListener());
-			//
-			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
-			music.setLooping(true);
-			music.setVolume((float) 1);
-			music.play();
-			//
-			items = new Array<Item>();
-			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
-			//
-			hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 			break;
 		case 3:
-
-			waitJump = false;
-			jump = 0;
-			changeNiveau = false;
-			atlas = new TextureAtlas("LpcAEntites.pack");
-			//
-			this.game = game;
-			gamecam = new OrthographicCamera();
-			gamePort = new FitViewport(LpcAdventure.V_WIDTH / Joueur.PPM, LpcAdventure.V_HEIGHT / Joueur.PPM, gamecam);
-			//
-			
-			
-			//
-			maploader = new TmxMapLoader(); 
 			map = maploader.load("LpcAdventure4.tmx");
-
-
-			renderer = new OrthogonalTiledMapRenderer(map, 1 / Joueur.PPM);
-			//
-			gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight() / 2, 0);
-			//
-			world = new World(new Vector2(0, -10), true);
-			b2dr = new Box2DDebugRenderer();
-			
-			player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
-			//
-			creator = new B2WorldCreator(this,sauvegardebis);
-			//
-			world.setContactListener(new WorldContactListener());
-			//
-			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
-			music.setLooping(true);
-			music.setVolume((float) 1);
-			music.play();
-			//
-			items = new Array<Item>();
-			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
-			//
-			hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 			break;
 		case 4:
-
-			waitJump = false;
-			jump = 0;
-			changeNiveau = false;
-			atlas = new TextureAtlas("LpcAEntites.pack");
-			//
-			this.game = game;
-			gamecam = new OrthographicCamera();
-			gamePort = new FitViewport(LpcAdventure.V_WIDTH / Joueur.PPM, LpcAdventure.V_HEIGHT / Joueur.PPM, gamecam);
-			//
-			
-			
-			//
-			maploader = new TmxMapLoader(); 
 			map = maploader.load("LpcAdventure5.tmx");
-
-
-			renderer = new OrthogonalTiledMapRenderer(map, 1 / Joueur.PPM);
-			//
-			gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight() / 2, 0);
-			//
-			world = new World(new Vector2(0, -10), true);
-			b2dr = new Box2DDebugRenderer();
-			
-			player = new Joueur(this,game,sauvegarde.isBig(),true,sauvegardebis);
-			//
-			creator = new B2WorldCreator(this,sauvegardebis);
-			//
-			world.setContactListener(new WorldContactListener());
-			//
-			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
-			music.setLooping(true);
-			music.setVolume((float) 1);
-			music.play();
-			//
-			items = new Array<Item>();
-			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
-			//
-			hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 			break;
 		case 5:
-
-			waitJump = false;
-			jump = 0;
-			changeNiveau = false;
-			atlas = new TextureAtlas("LpcAEntites.pack");
-			//
-			this.game = game;
-			gamecam = new OrthographicCamera();
-			gamePort = new FitViewport(LpcAdventure.V_WIDTH / Joueur.PPM, LpcAdventure.V_HEIGHT / Joueur.PPM, gamecam);
-			//
-			
-			
-			//
-			maploader = new TmxMapLoader(); 
 			map = maploader.load("LpcAdventure6.tmx");
-
-
-			renderer = new OrthogonalTiledMapRenderer(map, 1 / Joueur.PPM);
-			//
-			gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight() / 2, 0);
-			//
-			world = new World(new Vector2(0, -10), true);
-			b2dr = new Box2DDebugRenderer();
-			
-			player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
-			//
-			creator = new B2WorldCreator(this,sauvegardebis);
-			//
-			world.setContactListener(new WorldContactListener());
-			//
-			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
-			music.setLooping(true);
-			music.setVolume((float) 1);
-			music.play();
-			//
-			items = new Array<Item>();
-			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
-			//
-			hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 			break;
 		default:
-			waitJump = false;
-			jump = 0;
-			changeNiveau = false;
-			atlas = new TextureAtlas("LpcAEntites.pack");
-			//
-			this.game = game;
-			gamecam = new OrthographicCamera();
-			gamePort = new FitViewport(LpcAdventure.V_WIDTH / Joueur.PPM, LpcAdventure.V_HEIGHT / Joueur.PPM, gamecam);
-			//
-			//
-			maploader = new TmxMapLoader(); 
 			map = maploader.load("LpcAdventure2.tmx");
-
-
-			renderer = new OrthogonalTiledMapRenderer(map, 1 / Joueur.PPM);
-			//
-			gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight() / 2, 0);
-			//
-			world = new World(new Vector2(0, -10), true);
-			b2dr = new Box2DDebugRenderer();
-			//
-			player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
-			//
-			creator = new B2WorldCreator(this,sauvegardebis);
-			//
-			world.setContactListener(new WorldContactListener());
-			//
-			music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
-			music.setLooping(true);
-			music.setVolume((float) 1);
-			music.play();
-			//
-			items = new Array<Item>();
-			itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
-			//
-			hud = new Hud(game.batch,game.getLvl(),0,time,game.nbVies,sauvegardebis);
 			break;
 		}
+		
+		renderer = new OrthogonalTiledMapRenderer(map, 1 / Joueur.PPM);
+		gamecam.position.set(gamePort.getWorldWidth()/2, gamePort.getWorldHeight() / 2, 0);
+		world = new World(new Vector2(0, -10), true);
+		b2dr = new Box2DDebugRenderer();
+		player = new Joueur(this,game,sauvegarde.isBig(),false,sauvegardebis);
+		creator = new B2WorldCreator(this,sauvegardebis);
+		world.setContactListener(new WorldContactListener());
+		music = LpcAdventure.manager.get("audio/music/flamingo.ogg", Music.class);
+		music.setLooping(true);
+		music.setVolume((float) 1);
+		music.play();
+		items = new Array<Item>();
+		itemsToSpawn = new LinkedBlockingQueue<ItemDef>();
+		hud = new Hud(game.batch,game.getLvl(),sauvegarde.getScore(),time,game.nbVies,sauvegardebis);
 
 	}
 	
