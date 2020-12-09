@@ -5,7 +5,8 @@ Projet secondaire ISN Lycée Pape Clément 2019-2020
 
 git clone https://github.com/BookeeM/LpcAdventure.git
 
-Go to "local.properties" and enter your path to android SDK
+Create a "local.properties" file and enter your path to android SDK like this:
+sdk.dir=C:/Users/xxx/AppData/Local/Android/Sdk
 
 Open a CMD in the project root and type "gradlew build"
 
