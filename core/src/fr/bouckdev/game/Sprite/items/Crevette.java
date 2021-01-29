@@ -12,45 +12,32 @@ import fr.bouckdev.game.Sprite.Joueur;
 
 public class Crevette extends Item {
 	
-	public Crevette(PlayScreen screen, float x, float y) {
-		
+	public Crevette(PlayScreen screen, float x, float y) {	
         super(screen, x, y);
 		setRegion(screen.getAtlas().findRegion("Entites"),112, 0, 16, 16);
-		velocity = new Vector2(0.7f,-1f);
-		
-		
+		velocity = new Vector2(0.7f,-1f);	
 	}
 
 	@Override
 	public void defineItem() {
-
 		BodyDef bdef = new BodyDef();
 		bdef.position.set(getX(), getY());
 		bdef.type = BodyDef.BodyType.DynamicBody;
 		body = world.createBody(bdef);
-		
-
 		FixtureDef fdef = new FixtureDef();
-
 		CircleShape shape = new CircleShape();
-
 		shape.setRadius(5 / Joueur.PPM);
 		fdef.filter.categoryBits = LpcAdventure.ITEM_BIT;
 		fdef.filter.maskBits = LpcAdventure.JOUEUR_BIT | LpcAdventure.OBJECT_BIT |LpcAdventure.GROUND_BIT | LpcAdventure.TROUSSE_BIT | LpcAdventure.BRICK_BIT;
-		
 		fdef.shape = shape;
-		body.createFixture(fdef).setUserData(this);		
-		
+		body.createFixture(fdef).setUserData(this);	
 	}
 
 	@Override
-	public void use(Joueur joueur) {
-		
+	public void use(Joueur joueur) {	
 		Hud.addScore(200);
 		destroy();
-		joueur.grow();
-		
-		
+		joueur.grow();	
 	}
 	
 	@Override

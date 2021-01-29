@@ -26,7 +26,6 @@ public class Crabe extends Mobs {
 
 	
 	public Crabe(PlayScreen screen, float x, float y) {
-
 		super(screen, x, y,true);
 		frames = new Array<TextureRegion>();
 		for(int i = 0; i < 2; i++) 
@@ -38,28 +37,18 @@ public class Crabe extends Mobs {
 		setBounds(getX(), getY(), 16 / Joueur.PPM, 16 / Joueur.PPM);
 		setToDestroy = false;
 		destroyed = false;
-		
-	
 	}
-	
 
-	
-	public void update(float dt)  {
-		
-		stateTime += dt;
-		
-		if(setToDestroy && !destroyed) {
-			
+	public void update(float dt)  {	
+		stateTime += dt;	
+		if(setToDestroy && !destroyed) {	
 			world.destroyBody(b2body);
 			destroyed = true;
-
 			setRegion(new TextureRegion(screen.getAtlas().findRegion("Entites"), 368, 0, 16 ,16));
 			stateTime = 0;
-			
 		}
 		
 		else if(!destroyed) {
-		
 			b2body.setLinearVelocity(velocity);
 			setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
 	        setRegion(getFrame(dt));
@@ -103,52 +92,36 @@ public class Crabe extends Mobs {
 		fdef.restitution = 0.5f;
 		fdef.filter.categoryBits = LpcAdventure.MOBS_HEAD_BIT;
 		b2body.createFixture(fdef).setUserData(this);
-		
-		
-		
-		
+	
 	}
 	
 	
 	@Override
-	public void hitOnHead() {
-		
+	public void hitOnHead() {		
 		Hud.addScore(300);
 		setToDestroy = true;
 		LpcAdventure.manager.get("audio/sounds/death.ogg",Sound.class).play();
-		
 	}
 	
-	public void draw(Batch batch) {
-		
+	public void draw(Batch batch) {	
 		if(!destroyed|| stateTime < 1) 
-			super.draw(batch);
-
-		
+			super.draw(batch);	
 	}
 	
     public TextureRegion getFrame(float dt){
         TextureRegion region;
-        region = walkAnimation.getKeyFrame(stateTime, true);
-        
+        region = walkAnimation.getKeyFrame(stateTime, true);   
         if(velocity.x > 0 && region.isFlipX() == true){
             region.flip(true, false);
         }
         if(velocity.x < 0 && region.isFlipX() == false){
             region.flip(true, false);
         }
-
         return region;
     }
-
-
 
 	@Override
 	public void hitOnHeadCygne(Joueur player) {
 		// TODO Auto-generated method stub
-		
 	}
-	
-	
-
 }

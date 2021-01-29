@@ -86,7 +86,10 @@ public class EndScreen implements Screen{
 		// TODO Auto-generated method stub
 		
 	}
-
+	
+	/**
+	 * Render the Screen
+	 */
 	@Override
 	public void render(float delta) {
 		//Si un bouton est appuyé, on recommence le jeu, new Playscreen défini le nouvel écran de jeu, ici on choisi Playscreen(écran de jeu)
@@ -100,6 +103,9 @@ public class EndScreen implements Screen{
 		
 	}
 
+	/**
+	 * resize the wwindow
+	 */
 	@Override
 	public void resize(int width, int height) {
 		// TODO Auto-generated method stub
@@ -130,7 +136,4 @@ public class EndScreen implements Screen{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-
 }

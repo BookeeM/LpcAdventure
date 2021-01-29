@@ -28,43 +28,31 @@ public class Cygne extends Mobs {
 	public Cygne(PlayScreen screen, float x, float y) {
 		super(screen, x, y,true);
 		frames = new Array<TextureRegion>();
-		for(int i = 0; i < 2; i++) 
-			
+		for(int i = 0; i < 2; i++) 	
 			frames.add(new TextureRegion(screen.getAtlas().findRegion("Entites"), 384 + i * 16, 0 , 16 ,16));
-	
 		walkAnimation = new Animation(0.25f, frames);
 		stateTime = 0;
 		setBounds(getX(), getY(), 16 / Joueur.PPM, 16 / Joueur.PPM);
 		setToDestroy = false;
 		destroyed = false;
-		
-	
 	}
 	
 
 	
 	public void update(float dt)  {
-		
-		stateTime += dt;
-		
-		if(setToDestroy && !destroyed) {
-			
+		stateTime += dt;	
+		if(setToDestroy && !destroyed) {	
 			world.destroyBody(b2body);
 			destroyed = true;
-
 			setRegion(new TextureRegion(screen.getAtlas().findRegion("Entites"), 416, 0, 16 ,16));
-			stateTime = 0;
-			
+			stateTime = 0;		
 		}
 		
 		else if(!destroyed) {
-		
 			b2body.setLinearVelocity(velocityCygne);
 			setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
 	        setRegion(getFrame(dt));
 		}
-		
-		
 	}
 	
 	@Override
@@ -74,12 +62,8 @@ public class Cygne extends Mobs {
 		bdef.position.set(getX(), getY());
 		bdef.type = BodyDef.BodyType.DynamicBody;
 		b2body = world.createBody(bdef);
-		
-
 		FixtureDef fdef = new FixtureDef();
-
 		CircleShape shape = new CircleShape();
-
 		shape.setRadius(6 / Joueur.PPM);
 		fdef.shape = shape;
 		
@@ -102,25 +86,15 @@ public class Cygne extends Mobs {
 		fdef.restitution = 0.5f;
 		fdef.filter.categoryBits = LpcAdventure.MOBS_CYGNEHEAD_BIT;
 		b2body.createFixture(fdef).setUserData(this);
-		
-		
-		
-		
 	}
 	
 	
 	@Override
-	public void hitOnHead() {
-		
-		
-	}
+	public void hitOnHead() {}
 	
-	public void draw(Batch batch) {
-		
+	public void draw(Batch batch) {	
 		if(!destroyed|| stateTime < 1) 
 			super.draw(batch);
-
-		
 	}
 	
     public TextureRegion getFrame(float dt){
@@ -133,7 +107,6 @@ public class Cygne extends Mobs {
         if(velocityCygne.x < 0 && region.isFlipX() == false){
             region.flip(true, false);
         }
-
         return region;
     }
 
@@ -144,11 +117,6 @@ public class Cygne extends Mobs {
 		player.bounce();
 		Hud.addScore(300);
 		setToDestroy = true;
-		LpcAdventure.manager.get("audio/sounds/death.ogg",Sound.class).play();
-	
-		
+		LpcAdventure.manager.get("audio/sounds/death.ogg",Sound.class).play();	
 	}
-	
-	
-
 }

@@ -28,30 +28,21 @@ public class Pingu extends Mobs {
 	public Pingu(PlayScreen screen, float x, float y) {
 		super(screen, x, y,true);
 		frames = new Array<TextureRegion>();
-		for(int i = 0; i < 2; i++) 
-			
+		for(int i = 0; i < 2; i++) 		
 			frames.add(new TextureRegion(screen.getAtlas().findRegion("Entites"), 432 + i * 16, 0 , 16 ,16));
-		
 		walkAnimation = new Animation(0.2f, frames);
 		stateTime = 0;
 		setBounds(getX(), getY(), 16 / Joueur.PPM, 16 / Joueur.PPM);
 		setToDestroy = false;
 		destroyed = false;
-		
-	
 	}
-	
 
-	
 	public void update(float dt)  {
 		
 		stateTime += dt;
-		
-		if(setToDestroy && !destroyed) {
-			
+		if(setToDestroy && !destroyed) {	
 			world.destroyBody(b2body);
 			destroyed = true;
-
 			setRegion(new TextureRegion(screen.getAtlas().findRegion("Entites"), 464, 0, 16 ,16));
 			stateTime = 0;
 			
@@ -60,11 +51,8 @@ public class Pingu extends Mobs {
 		else if(!destroyed) {
 			
 			if(getRandomNumberInRange(1,2) == 1) {
-
 				b2body.setLinearVelocity(new Vector2(0.5f,0.40f));
-
 			} else {
-
 				b2body.setLinearVelocity(new Vector2(0.5f,-0.10f));
 			}
 			setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
@@ -83,9 +71,7 @@ public class Pingu extends Mobs {
 		bdef.type = BodyDef.BodyType.DynamicBody;
 		b2body = world.createBody(bdef);
 		
-
 		FixtureDef fdef = new FixtureDef();
-
 		CircleShape shape = new CircleShape();
 
 		shape.setRadius(6 / Joueur.PPM);
@@ -110,10 +96,7 @@ public class Pingu extends Mobs {
 		fdef.restitution = 0.5f;
 		fdef.filter.categoryBits = LpcAdventure.MOBS_CYGNEHEAD_BIT;
 		b2body.createFixture(fdef).setUserData(this);
-		
-		
-		
-		
+
 	}
 	
 	
@@ -128,8 +111,6 @@ public class Pingu extends Mobs {
 		
 		if(!destroyed|| stateTime < 1) 
 			super.draw(batch);
-
-		
 	}
 	
     public TextureRegion getFrame(float dt){
@@ -142,21 +123,15 @@ public class Pingu extends Mobs {
         if(velocity.x < 0 && region.isFlipX() == false){
             region.flip(true, false);
         }
-
         return region;
     }
 
     
 	@Override
 	public void hitOnHeadCygne(Joueur player) {
-		
 		player.bounce();
 		Hud.addScore(300);
 		setToDestroy = true;
-		LpcAdventure.manager.get("audio/sounds/death.ogg",Sound.class).play();
-		
+		LpcAdventure.manager.get("audio/sounds/death.ogg",Sound.class).play();	
 	}
-	
-	
-
 }

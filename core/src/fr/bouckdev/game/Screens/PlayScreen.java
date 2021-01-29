@@ -35,14 +35,9 @@ import fr.bouckdev.game.tools.B2WorldCreator;
 import fr.bouckdev.game.tools.WorldContactListener;
 
 public class PlayScreen implements Screen{
-	
-
-	
 	private LpcAdventure game;
 	private TextureAtlas atlas;
-
-
-		
+	
 	private OrthographicCamera gamecam;
 	private Viewport gamePort;
 	private Hud hud;
@@ -51,11 +46,9 @@ public class PlayScreen implements Screen{
 	private TmxMapLoader maploader;
 	private TiledMap map;
 	private OrthogonalTiledMapRenderer renderer;
-	
-	
+
 	//Sprites
 	private Joueur player;
-
 
 	private Music music;
 	
@@ -81,6 +74,8 @@ public class PlayScreen implements Screen{
 	private boolean decel;
 	
 	public Sauvegarde sauvegardebis;
+	
+	private boolean showHitbox = false;
 	
 	public PlayScreen(LpcAdventure game, Boolean restart, Integer time, Sauvegarde sauvegarde) {
 		
@@ -142,12 +137,19 @@ public class PlayScreen implements Screen{
 	}
 	
  
+	/**
+	 * Add item to spawn on the map
+	 * @param ItemDef
+	 */
 	public void spawnItem(ItemDef idef) { //Ajout des Items à spawn 
 		
 		itemsToSpawn.add(idef);
 		
 	}
 	
+	/**
+	 * Spawn items when they are needed
+	 */
 	public void handleSpawningItems() { //Spawn des items lorsqu'ils sont requis.
 		
 		if(!itemsToSpawn.isEmpty()) {
@@ -168,6 +170,10 @@ public class PlayScreen implements Screen{
 		
 	}
 	
+	/**
+	 * Return current map atlas
+	 * @return TextureAtlas
+	 */
 	public TextureAtlas getAtlas() {
 		return atlas;
 	}
@@ -177,6 +183,11 @@ public class PlayScreen implements Screen{
 		
 	}
 	
+	
+	/**
+	 * Handle if a key is pressed or not (controls of the game)
+	 * @param float
+	 */
 	public void handleInput(float dt) { //Définition des contrôles de jeu.
 		
 			if(flappy) {
@@ -246,6 +257,10 @@ public class PlayScreen implements Screen{
 	}
 
 
+	/**
+	 * Update the game tick and check a lot of conditions, spawn mobs, items
+	 * @param float
+	 */
 	public void update(float dt) {
 		
 		if(reset) {
@@ -318,43 +333,35 @@ public class PlayScreen implements Screen{
 				mobs.b2body.setActive(true);
 		}
 		
-		//On update les items actuellement spawn.
-		
+		//On update les items actuellement spawn.	
 		for(Item item: items)
 			item.update(dt);
 		
-		world.step(1/60f, 6, 2);	
-		
-		gamecam.position.x = player.b2body.getPosition().x;
-		
-		gamecam.update();
-		
+		world.step(1/60f, 6, 2);		
+		gamecam.position.x = player.b2body.getPosition().x;	
+		gamecam.update();	
 		renderer.setView(gamecam);
 
 
 
 	}
-
+	
+	/**
+	 * Render on screen elements of the game
+	 * @param float
+	 */
 	@Override
 	public void render(float delta) { // Rend à l'écran les éléments du jeu
 		
 		
 		time = getTime();
-		
 		update(delta);
-		
-		//
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		
-		//
 		renderer.render();
 		
-		//HITBOX MONTRER
-		//b2dr.render(world, gamecam.combined);
-		
-		
-		//
+		if(this.showHitbox)
+			b2dr.render(world, gamecam.combined);
 		
 		game.batch.setProjectionMatrix(gamecam.combined);
 		game.batch.begin();
@@ -395,19 +402,34 @@ public class PlayScreen implements Screen{
 		
 	}
 	
+	/**
+	 * Return the HUD world timer
+	 * @return Integer
+	 */
 	public Integer getTime() {
 		return hud.worldTimer;
 	}
 
-
+	/**
+	 * Return the TiledMap of the game
+	 * @return TiledMap
+	 */
 	public TiledMap getMap() {
 		return map;
 	}
 	
+	/**
+	 * Return the world object
+	 * @return World
+	 */
 	public World getWorld() {
 		return world;
 	}
-	
+
+	/**
+	 * Return if the game is over or not
+	 * @return boolean;
+	 */
 	public boolean gameOver() {
 		if(player.currentState == Joueur.State.GAMEOVER && player.getStateTimer() > 1) {
 			return true ;
@@ -416,6 +438,10 @@ public class PlayScreen implements Screen{
 		
 	}
 	
+	/**
+	 * Return if the player is dead or not
+	 * @return boolean;
+	 */
 	public boolean mort() {
 		if(player.currentState == Joueur.State.DEAD && player.getStateTimer() > 1) {
 			return true;
@@ -423,11 +449,12 @@ public class PlayScreen implements Screen{
 		return false;
 	}
 	
+	/**
+	 * Resize the game window
+	 */
 	@Override
-	public void resize(int width, int height) {
-		
-		gamePort.update(width, height);
-		
+	public void resize(int width, int height) {	
+		gamePort.update(width, height);	
 	}
 	
 	@Override
@@ -445,6 +472,9 @@ public class PlayScreen implements Screen{
 		
 	}
 
+	/**
+	 * Dispose elements and over the game.
+	 */
 	@Override
 	public void dispose() {
 		// TODO Auto-generated method stub
@@ -452,10 +482,6 @@ public class PlayScreen implements Screen{
 		renderer.dispose();
 		world.dispose();
 		b2dr.dispose();
-		hud.dispose();
-		
-		
+		hud.dispose();	
 	}
-
-
 }

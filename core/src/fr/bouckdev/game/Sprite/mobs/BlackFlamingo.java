@@ -37,34 +37,23 @@ public class BlackFlamingo extends Mobs {
 		setBounds(getX(), getY(), 16 / Joueur.PPM, 16 / Joueur.PPM);
 		setToDestroy = false;
 		destroyed = false;
-		
-	
 	}
-	
-
 	
 	public void update(float dt)  {
 		
 		stateTime += dt;
 		
 		if(setToDestroy && !destroyed) {
-			
 			world.destroyBody(b2body);
 			destroyed = true;
-
 			setRegion(new TextureRegion(screen.getAtlas().findRegion("Entites"), 256, 0, 16 ,16));
-			stateTime = 0;
-			
+			stateTime = 0;			
 		}
-		
-		else if(!destroyed) {
-		
+		else if(!destroyed) {	
 			b2body.setLinearVelocity(velocity);
 			setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
 	        setRegion(getFrame(dt));
-		}
-		
-		
+		}	
 	}
 	
 	@Override
@@ -74,18 +63,12 @@ public class BlackFlamingo extends Mobs {
 		bdef.position.set(getX(), getY());
 		bdef.type = BodyDef.BodyType.DynamicBody;
 		b2body = world.createBody(bdef);
-		
-
 		FixtureDef fdef = new FixtureDef();
-
 		CircleShape shape = new CircleShape();
-
 		shape.setRadius(6 / Joueur.PPM);
 		fdef.shape = shape;
-		
 		fdef.filter.categoryBits = LpcAdventure.MOBS_BIT;
 		fdef.filter.maskBits = LpcAdventure.GROUND_BIT | LpcAdventure.MOBS_BIT | LpcAdventure.TROUSSE_BIT | LpcAdventure.BRICK_BIT | LpcAdventure.OBJECT_BIT | LpcAdventure.JOUEUR_BIT;
-		
 		b2body.createFixture(fdef).setUserData(this);	
 		
 		//creation de la tête
@@ -101,29 +84,20 @@ public class BlackFlamingo extends Mobs {
 		fdef.shape = head;
 		fdef.restitution = 0.5f;
 		fdef.filter.categoryBits = LpcAdventure.MOBS_HEAD_BIT;
-		b2body.createFixture(fdef).setUserData(this);
-		
-		
-		
-		
+		b2body.createFixture(fdef).setUserData(this);	
 	}
 	
 	
 	@Override
-	public void hitOnHead() {
-		
+	public void hitOnHead() {	
 		Hud.addScore(300);
 		setToDestroy = true;
-		LpcAdventure.manager.get("audio/sounds/death.ogg",Sound.class).play();
-		
+		LpcAdventure.manager.get("audio/sounds/death.ogg",Sound.class).play();	
 	}
 	
-	public void draw(Batch batch) {
-		
+	public void draw(Batch batch) {	
 		if(!destroyed|| stateTime < 1) 
 			super.draw(batch);
-
-		
 	}
 	
     public TextureRegion getFrame(float dt){
@@ -136,18 +110,12 @@ public class BlackFlamingo extends Mobs {
         if(velocity.x < 0 && region.isFlipX() == false){
             region.flip(true, false);
         }
-
         return region;
     }
-
-
 
 	@Override
 	public void hitOnHeadCygne(Joueur player) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-
 }

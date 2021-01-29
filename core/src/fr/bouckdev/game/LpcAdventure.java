@@ -35,6 +35,7 @@ public class LpcAdventure extends Game{
 	public static final short MOBS_CYGNE_BIT = 8184;
 	public static final short MOBS_PINGU_BIT = 16368;
 	//public static final short PINGUJUMP_BIT = 32736;
+	public static final short NB_LVL = 5;
 	public Integer niveau;
 	public Integer nbVies;
 	/*public static final int MENU = 1;
@@ -46,12 +47,13 @@ public class LpcAdventure extends Game{
 	public Sauvegarde sauvegarde;
 
 	
+	/**
+	 * Create and launch the game 
+	 * 
+	 */
 	@Override
 	public void create () {
 			//Définition de la partie + lancement
-		
-		
-			
 		
 			sauvegarde = new Sauvegarde();
 			niveau = sauvegarde.getLvl();
@@ -80,35 +82,39 @@ public class LpcAdventure extends Game{
 			setScreen(new PlayScreen(this,false,sauvegarde.getTemps(niveau),sauvegarde));
 			
 	}
-
+	
 	@Override
-	public void render () {
-		
-		super.render();
-		
+	public void render () {	
+		super.render();	
 	}
 	
 	
+	/*
+	 * Cancel the game
+	 */
 	@Override
-	public void dispose()  { //Unload la partie
-		
+	public void dispose()  { 
 		super.dispose();
 		manager.dispose();
-		batch.dispose();
-		
+		batch.dispose();		
 	}
 	
+	/**
+	 * 
+	 * Return player's stage
+	 * @return int 
+	 */
 	public Integer getLvl() { 
 		return niveau;
 	}
+
+	public void Save() {}
 	
-	public void Save() {
-		
-	}
-	
+	/**
+	 * Add a life to the player
+	 * 
+	 */
 	public void up() {
 		nbVies ++;
 	}
-
-
 }

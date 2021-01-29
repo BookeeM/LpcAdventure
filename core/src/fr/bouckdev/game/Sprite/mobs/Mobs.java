@@ -42,17 +42,13 @@ public abstract class Mobs extends Sprite {
 			if(x)
 				velocityCygne.x = -velocityCygne.x;
 			if(y)
-		
 				velocityCygne.y = -velocityCygne.y;
 		} else {
 			if(x)
 				velocity.x = -velocity.x;
 			if(y)
-		
 				velocity.y = -velocity.y;	
 		}
-			
-
 	}
 	
 	public static int getRandomNumberInRange(int min, int max) {

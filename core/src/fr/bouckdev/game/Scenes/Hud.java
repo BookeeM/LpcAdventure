@@ -239,6 +239,11 @@ public class Hud implements Disposable{
 		
 	}
 	
+	/** Update the game tick
+	 * 
+	 * @param dt
+	 * @param game
+	 */
 	public void update(float dt,LpcAdventure game) { // Mise à jour du HUD (Niveau,vies)
 	
 		timeCount += dt;
@@ -257,46 +262,80 @@ public class Hud implements Disposable{
 		
 	}
 	
+	/**
+	 * Update HUD score
+	 * @param value
+	 */
 	public static void addScore(int value) { //Fonction qui ajoute du score
-
 		score += value;
-		scoreLabel.setText(String.format("%06d", score));
-		
+		scoreLabel.setText(String.format("%06d", score));	
 	}
 	
+	
+	/**
+	 * 
+	 * Cancel the current scene
+	 */
 	@Override
 	public void dispose() {
 		
 		stage.dispose();
-		
 	}
 	
+	
+	/**
+	 * Return if the up key is pressed or not.
+	 * @return boolean
+	 */
     public boolean isUpPressed() {
         return upPressed;
     }
 
+	/**
+	 * Return if the down key is pressed or not.
+	 * @return boolean
+	 */
     public boolean isDownPressed() {
         return downPressed;
     }
 
+	/**
+	 * Return if the left key is pressed or not.
+	 * @return boolean
+	 */
     public boolean isLeftPressed() {
         return leftPressed;
     }
 
+	/**
+	 * Return if the right key is pressed or not.
+	 * @return boolean
+	 */
     public boolean isRightPressed() {
         return rightPressed;
     }
     
-	
+	/**
+	 * Return current score
+	 * @return int
+	 */
 	public Integer getScore() {
 		return score;
 	}
+	
+	/**
+	 * Return current world timer
+	 * @return float
+	 */
 	public float getTimer() {
 		return worldTimer;
 	}
-
+	
+	/**
+	 * Return if the space key is pressed or not.
+	 * @return boolean
+	 */
 	public boolean isEscapePressed() {
-		// TODO Auto-generated method stub
 		return escapePressed;
 	}
 	

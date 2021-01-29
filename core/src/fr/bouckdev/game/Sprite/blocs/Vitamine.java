@@ -10,16 +10,14 @@ import fr.bouckdev.game.Sprite.InteractiveTileObject;
 
 public class Vitamine extends InteractiveTileObject {
 	
-	public Vitamine(PlayScreen screen, Rectangle bounds) {
-		
+	public Vitamine(PlayScreen screen, Rectangle bounds) {	
 		super(screen ,bounds);
 		fixture.setUserData(this);
 		setCategoryFilter(LpcAdventure.BRICK_BIT);
 	}
 
 	@Override
-	public void onHeadHit() {
-		
+	public void onHeadHit() {	
 		setCategoryFilter(LpcAdventure.DESTROYED_BIT);
 		getCell().setTile(null);
 		LpcAdventure.manager.get("audio/sounds/breaking.wav", Sound.class).play();

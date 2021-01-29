@@ -15,9 +15,7 @@ public class NextLevel extends Item {
 		
         super(screen, x, y);
 		setRegion(screen.getAtlas().findRegion("Entites"),128, 0, 16, 16);
-		velocity = new Vector2(0.7f,-1f);
-		
-		
+		velocity = new Vector2(0.7f,-1f);	
 	}
 
 	@Override
@@ -27,7 +25,6 @@ public class NextLevel extends Item {
 		bdef.position.set(getX(), getY());
 		bdef.type = BodyDef.BodyType.DynamicBody;
 		body = world.createBody(bdef);
-		
 
 		FixtureDef fdef = new FixtureDef();
 
@@ -39,16 +36,12 @@ public class NextLevel extends Item {
 		
 		fdef.shape = shape;
 		body.createFixture(fdef).setUserData(this);		
-		
 	}
 
 	@Override
 	public void use(Joueur joueur) {
-		
 		nextLevel();
-		destroy();
-		
-		
+		destroy();	
 	}
 	
 	@Override

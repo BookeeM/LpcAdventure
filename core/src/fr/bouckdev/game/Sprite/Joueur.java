@@ -126,11 +126,8 @@ public class Joueur extends Sprite {
 		setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
 		setRegion(getFrame(dt));
 		if ((b2body.getPosition().y - getWidth() / 2) < -1.2 && isDead() != true) {
-
 			hit();
-
 		}
-
 		if (flappyb) {
 			if (b2body.getPosition().x > 35) {
 				screenbis.changeNiveau = true;
@@ -168,19 +165,13 @@ public class Joueur extends Sprite {
 		default:
 			region = joueurIsBig ? bigFlamingoStand : joueurStand;
 			break;
-
 		}
-
 		if ((b2body.getLinearVelocity().x < 0 || !runningRight) && !region.isFlipX()) {
-
 			region.flip(true, false);
 			runningRight = false;
-
 		} else if ((b2body.getLinearVelocity().x > 0 || runningRight) && region.isFlipX()) {
-
 			region.flip(true, false);
 			runningRight = true;
-
 		}
 
 		stateTimer = currentState == previousState ? stateTimer + dt : 0;
@@ -203,7 +194,6 @@ public class Joueur extends Sprite {
 			return State.RUNNING;
 		else
 			return State.STANDING;
-
 	}
 
 	public void grow() {

@@ -21,8 +21,7 @@ public abstract class Item extends Sprite {
 	private NextLevel nextlevel;
 	private boolean NivSuivant;
 	
-	public Item(PlayScreen screen, float x, float y) {
-		
+	public Item(PlayScreen screen, float x, float y) {	
 		this.screen = screen;
 		this.world = screen.getWorld();
 		toDestroy = false;
@@ -30,9 +29,7 @@ public abstract class Item extends Sprite {
 		NivSuivant = false;
 		setPosition(x,y);
 		setBounds(getX(), getY(), 16/ Joueur.PPM, 16/Joueur.PPM);
-		defineItem();
-
-		
+		defineItem();	
 	}
 
 	public abstract void defineItem();
@@ -40,11 +37,9 @@ public abstract class Item extends Sprite {
 	
 	public void update(float dt) {
 		
-		if(toDestroy && !destroyed)  {
-			
+		if(toDestroy && !destroyed)  {		
 			world.destroyBody(body);
-			destroyed = true;
-			
+			destroyed = true;	
 		}
 		
 		if(NivSuivant) {
@@ -54,27 +49,21 @@ public abstract class Item extends Sprite {
 		
 	}
 	
-	public void draw(Batch batch) {
-		
+	public void draw(Batch batch) {	
 		if(!destroyed)
 			super.draw(batch);
-		
 	}
 	public void destroy() {
-		
-		toDestroy = true;
-		
+		toDestroy = true;	
 	}
 	public void nextLevel() {
 		NivSuivant = true;
 	}
 	
 	public void reverseVelocity(boolean x, boolean y) {
-		
 		if(x)
 			velocity.x = -velocity.x;
 		if(y)
 			velocity.y = -velocity.y;
-	}
-		
+	}	
 }
